@@ -27,7 +27,7 @@ public class Photo implements Serializable {
 	private String filePath;
 
 	@Column(name = "album_id")
-	private Integer albumId;
+	private Long albumId;
 
 	public Photo() {
 		super();
