@@ -1,13 +1,13 @@
-package com.brahalla.PhotoAlbum.configuration;
+package com.brahalla.PhotoAlbum;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApplicationContext {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApplicationContext.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
