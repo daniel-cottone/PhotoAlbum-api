@@ -31,6 +31,12 @@ public class Album implements Serializable {
 		super();
 	}
 
+	public Album(String title, Date createdDate, Long coverPhotoId) {
+		this.setTitle(title);
+		this.setCreatedDate(createdDate);
+		this.setCoverPhotoId(coverPhotoId);
+	}
+
 	public Album(Long id, String title, Date createdDate, Long coverPhotoId) {
 		this.setId(id);
 		this.setTitle(title);

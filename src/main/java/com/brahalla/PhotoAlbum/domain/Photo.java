@@ -33,7 +33,14 @@ public class Photo implements Serializable {
 		super();
 	}
 
-	public Photo(Long id, String name, Date createdDate, String filePath, Long albumId) {
+	public Photo(String title, Date createdDate, String filePath, Long albumId) {
+		this.setTitle(title);
+		this.setCreatedDate(createdDate);
+		this.setFilePath(filePath);
+		this.setAlbumId(albumId);
+	}
+
+	public Photo(Long id, String title, Date createdDate, String filePath, Long albumId) {
 		this.setId(id);
 		this.setTitle(title);
 		this.setCreatedDate(createdDate);

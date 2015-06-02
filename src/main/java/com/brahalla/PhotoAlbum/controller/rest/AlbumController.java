@@ -19,21 +19,33 @@ public class AlbumController {
 	@Autowired
 	AlbumService albumService;
 
+	/* CREATE - create an album
+	 * POST /api/albums
+	 */
   @RequestMapping(method = RequestMethod.POST)
   public Album createAlbum(@RequestBody Album album) {
     return this.albumService.createAlbum(album);
   }
 
+	/* READ - read an album
+	 * GET /api/albums/{id}
+	 */
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
   public Album getAlbumById(@PathVariable("id") Long id) {
     return this.albumService.getAlbumById(id);
   }
 
+	/* READ - read all albums
+	 * GET /api/albums
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Album> getAlbumList() {
 		return this.albumService.getAlbumList();
 	}
 
+	/* DELETE - delete an album
+	 * DELETE /api/albums/{id}
+	 */
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public Album deleteAlbum(@PathVariable("id") Long id) {
     return this.albumService.deleteAlbum(id);
