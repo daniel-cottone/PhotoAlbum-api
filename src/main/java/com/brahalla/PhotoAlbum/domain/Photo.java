@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,9 +14,10 @@ import javax.persistence.Table;
 public class Photo implements Serializable {
 
 	private static final long serialVersionUID = 4223487423467416073L;
-	
+
 	@Id
 	@Column(name = "photo_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 
 	@Column(name = "title")

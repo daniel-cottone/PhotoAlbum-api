@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,9 +15,10 @@ import javax.persistence.Table;
 public class Album implements Serializable {
 
 	private static final long serialVersionUID = -3236876036458097243L;
-	
+
 	@Id
 	@Column(name = "album_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 
 	@Column(name = "title")
