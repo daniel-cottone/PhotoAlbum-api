@@ -1,4 +1,4 @@
-package com.brahalla.PhotoAlbum.model;
+package com.brahalla.PhotoAlbum.domain;
 
 import java.io.Serializable;
 import java.util.Date;

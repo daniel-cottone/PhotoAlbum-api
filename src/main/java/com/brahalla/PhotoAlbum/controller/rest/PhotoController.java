@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
-import com.brahalla.PhotoAlbum.model.Photo;
+import com.brahalla.PhotoAlbum.domain.Photo;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;

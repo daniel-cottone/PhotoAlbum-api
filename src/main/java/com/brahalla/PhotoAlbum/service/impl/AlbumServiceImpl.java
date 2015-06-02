@@ -1,7 +1,7 @@
 package com.brahalla.PhotoAlbum.service.impl;
 
 import com.brahalla.PhotoAlbum.dao.AlbumDao;
-import com.brahalla.PhotoAlbum.model.Album;
+import com.brahalla.PhotoAlbum.domain.Album;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.LinkedList;
