@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AlbumServiceImpl implements AlbumService {
 
-	@Autowired
-	private AlbumDao albumDao;
+	/*@Autowired
+	private AlbumDao albumDao;*/
 
   @Override
   public Album createAlbum(Album album) {

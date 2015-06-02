@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PhotoServiceImpl implements PhotoService {
 
-	@Autowired
-	private PhotoDao photoDao;
+	/*@Autowired
+	private PhotoDao photoDao;*/
 
   @Override
   public Photo createPhoto(Photo photo) {
