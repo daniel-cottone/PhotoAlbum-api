@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -19,7 +20,8 @@ public class Album implements Serializable {
 
 	@Id
 	@Column(name = "album_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_album_id_seq")
+	@SequenceGenerator(name = "albums_album_id_seq", sequenceName = "albums_album_id_seq", allocationSize = 1)
 	private Long id;
 
 	@Column(name = "title")
