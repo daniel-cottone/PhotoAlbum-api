@@ -27,7 +27,13 @@ public class AlbumDaoImpl implements AlbumDao {
 
   @Override
   public Album createAlbum(Album album) {
-    return new Album();
+    if (album.getId() == null) {
+			entityManager.persist(album);
+		}
+		else {
+			// TODO
+		}
+		return album;
   }
 
   @Override
@@ -44,7 +50,9 @@ public class AlbumDaoImpl implements AlbumDao {
 
   @Override
   public Album deleteAlbum(Long id) {
-    return new Album();
+    Album album = this.getAlbumById(id);
+    this.entityManager.remove(album);
+    return album;
   }
 
 }

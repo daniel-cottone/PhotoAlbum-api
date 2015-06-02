@@ -27,7 +27,13 @@ public class PhotoDaoImpl implements PhotoDao {
 
   @Override
   public Photo createPhoto(Photo photo) {
-    return new Photo();
+    if (photo.getId() == null) {
+			entityManager.persist(photo);
+		}
+		else {
+			// TODO
+		}
+		return photo;
   }
 
   @Override
@@ -44,7 +50,9 @@ public class PhotoDaoImpl implements PhotoDao {
 
   @Override
   public Photo deletePhoto(Long id) {
-    return new Photo();
+    Photo photo = this.getPhotoById(id);
+    this.entityManager.remove(photo);
+    return photo;
   }
 
 }
