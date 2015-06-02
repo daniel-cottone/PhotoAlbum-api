@@ -4,7 +4,6 @@ target/
 *.jar
 *.war
 *.ear
-application.properties
 
 # OS
 .DS_Store
