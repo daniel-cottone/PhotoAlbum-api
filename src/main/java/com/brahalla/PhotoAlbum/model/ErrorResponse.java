@@ -10,7 +10,7 @@ public class ErrorResponse implements Serializable {
   private String errorMessage;
 
   public ErrorResponse() {
-    this();
+    super();
   }
 
   public ErrorResponse(String errorCode, String errorMessage) {
