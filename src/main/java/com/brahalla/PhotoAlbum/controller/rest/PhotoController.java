@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
-import com.brahalla.PhotoAlbum.domain.Photo;
+import com.brahalla.PhotoAlbum.model.PhotoInfo;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class PhotoController {
 	PhotoService photoService;
 
 	/* CREATE - create a photo
-	 * POST /api/photoss
+	 * POST /api/photos
 	 */
   @RequestMapping(method = RequestMethod.POST)
   public Photo createPhoto(@RequestBody Photo photo) {

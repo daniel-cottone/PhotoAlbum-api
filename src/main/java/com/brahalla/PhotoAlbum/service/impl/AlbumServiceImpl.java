@@ -2,6 +2,8 @@ package com.brahalla.PhotoAlbum.service.impl;
 
 import com.brahalla.PhotoAlbum.dao.AlbumDao;
 import com.brahalla.PhotoAlbum.domain.Album;
+import com.brahalla.PhotoAlbum.factory.AlbumFactory;
+import com.brahalla.PhotoAlbum.model.AlbumInfo;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.LinkedList;
@@ -18,7 +20,8 @@ public class AlbumServiceImpl implements AlbumService {
 	private AlbumDao albumDao;
 
   @Override
-  public Album createAlbum(Album album) {
+  public Album createAlbum(AlbumInfo albumInfo) {
+		Album album = AlbumFactory.createAlbum(albumInfo);
     return this.albumDao.createAlbum(album);
   }
 

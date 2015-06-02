@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
-import com.brahalla.PhotoAlbum.domain.Album;
+import com.brahalla.PhotoAlbum.model.AlbumInfo;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.List;
@@ -23,8 +23,8 @@ public class AlbumController {
 	 * POST /api/albums
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Album createAlbum(@RequestBody Album album) {
-    return this.albumService.createAlbum(album);
+  public Album createAlbum(@RequestBody AlbumInfo albumInfo) {
+    return this.albumService.createAlbum(albumInfo);
   }
 
 	/* READ - read an album

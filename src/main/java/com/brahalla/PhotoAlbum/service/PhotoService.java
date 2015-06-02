@@ -1,12 +1,13 @@
 package com.brahalla.PhotoAlbum.service;
 
 import com.brahalla.PhotoAlbum.domain.Photo;
+import com.brahalla.PhotoAlbum.model.PhotoInfo;
 
 import java.util.List;
 
 public interface PhotoService {
 
-  public Photo createPhoto(Photo photo);
+  public Photo createPhoto(PhotoInfo photoInfo);
 
   public Photo getPhotoById(Long id);
 
