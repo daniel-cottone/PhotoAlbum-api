@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/photos")
+@RequestMapping("photos")
 public class PhotoController {
 
 	@Autowired
