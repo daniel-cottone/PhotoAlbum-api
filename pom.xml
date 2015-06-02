@@ -44,7 +44,7 @@
 
   <!-- Properties information -->
   <properties>
-    <java.version>1.6</java.version>
+    <java.version>1.7</java.version>
   </properties>
 
   <!-- Build information -->
