@@ -6,7 +6,6 @@ import com.brahalla.PhotoAlbum.factory.AlbumFactory;
 import com.brahalla.PhotoAlbum.model.AlbumInfo;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
