@@ -14,27 +14,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PhotoServiceImpl implements PhotoService {
 
-	/*@Autowired
-	private PhotoDao photoDao;*/
+	@Autowired
+	private PhotoDao photoDao;
 
   @Override
   public Photo createPhoto(Photo photo) {
-    return new Photo();
+    return this.photoDao.createPhoto(photo);
   }
 
   @Override
-  public Photo getPhotoById(Integer id) {
-    return new Photo();
+  public Photo getPhotoById(Long id) {
+    return this.photoDao.getPhotoById(id);
   }
 
   @Override
   public List<Photo> getPhotoList() {
-    return new LinkedList<Photo>();
+    return this.photoDao.getPhotoList();
   }
 
   @Override
-  public Photo deletePhoto(Integer id) {
-    return new Photo();
+  public Photo deletePhoto(Long id) {
+    return this.photoDao.deletePhoto(id);
   }
 
 }

@@ -8,10 +8,10 @@ public interface PhotoService {
 
   public Photo createPhoto(Photo photo);
 
-  public Photo getPhotoById(Integer id);
+  public Photo getPhotoById(Long id);
 
   public List<Photo> getPhotoList();
 
-  public Photo deletePhoto(Integer id);
+  public Photo deletePhoto(Long id);
 
 }

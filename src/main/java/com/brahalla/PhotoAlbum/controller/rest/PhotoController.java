@@ -25,7 +25,7 @@ public class PhotoController {
   }
 
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
-  public Photo getPhotoById(@PathVariable("id") Integer id) {
+  public Photo getPhotoById(@PathVariable("id") Long id) {
     return this.photoService.getPhotoById(id);
   }
 
@@ -35,7 +35,7 @@ public class PhotoController {
 	}
 
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-  public Photo deletePhoto(@PathVariable("id") Integer id) {
+  public Photo deletePhoto(@PathVariable("id") Long id) {
     return this.photoService.deletePhoto(id);
   }
 
