@@ -17,7 +17,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandlerController {
 
-	private static final Log log = LogFactory.getLog(GlobalExceptionhandlerController.class);
+	private static final Log log = LogFactory.getLog(GlobalExceptionHandlerController.class);
 
   // Bad JSON request
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
