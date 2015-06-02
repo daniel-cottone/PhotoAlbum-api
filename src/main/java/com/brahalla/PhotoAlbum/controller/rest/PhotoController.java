@@ -24,8 +24,8 @@ public class PhotoController {
 	 * POST /api/photos
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Photo createPhoto(@RequestBody Photo photo) {
-    return this.photoService.createPhoto(photo);
+  public Photo createPhoto(@RequestBody PhotoInfo photoInfo) {
+    return this.photoService.createPhoto(photoInfo);
   }
 
 	/* READ - read a photo
