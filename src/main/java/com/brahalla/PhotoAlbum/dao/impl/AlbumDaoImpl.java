@@ -6,6 +6,7 @@ import com.brahalla.PhotoAlbum.model.Album;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
