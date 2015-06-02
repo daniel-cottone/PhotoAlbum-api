@@ -3,11 +3,11 @@ package com.brahalla.PhotoAlbum.dao.impl;
 import com.brahalla.PhotoAlbum.dao.AlbumDao;
 import com.brahalla.PhotoAlbum.model.Album;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +37,9 @@ public class AlbumDaoImpl implements AlbumDao {
 
   @Override
   public List<Album> getAlbumList() {
-    return new LinkedList<Album>();
+    String sql = "select a from Album as a";
+    Query query = this.entityManager.createQuery(sql);
+    return query.getResultList();
   }
 
   @Override
