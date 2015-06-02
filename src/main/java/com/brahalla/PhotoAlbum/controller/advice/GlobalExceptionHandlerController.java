@@ -14,7 +14,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandlerController {
 
-  // No page mapping found
+  /*// No page mapping found
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler({NoHandlerFoundException.class})
   @ResponseBody
@@ -25,7 +25,7 @@ public class GlobalExceptionHandlerController {
     String errorMsg = "Requested URL doesn't exist";
 
     return new ResponseEntity<>(new ErrorResponse(errorCode, errorMsg), HttpStatus.BAD_REQUEST);
-  }
+  }*/
 
   // Bad JSON request
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
