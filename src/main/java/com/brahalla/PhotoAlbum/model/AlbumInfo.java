@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class AlbumInfo implements Serializable {
 
-	//private static final long serialVersionUID = ;
+	private static final long serialVersionUID = -7086382610728542290L;
 	private String title;
 	private Long coverPhotoId;
 

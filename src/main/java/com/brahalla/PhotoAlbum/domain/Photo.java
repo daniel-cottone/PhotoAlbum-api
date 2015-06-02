@@ -12,7 +12,8 @@ import javax.persistence.Table;
 @Table(name = "photos")
 public class Photo implements Serializable {
 
-	//private static final long serialVersionUID = ;
+	private static final long serialVersionUID = 4223487423467416073L;
+	
 	@Id
 	@Column(name = "photo_id")
 	private Long id;

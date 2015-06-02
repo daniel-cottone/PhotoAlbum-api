@@ -13,7 +13,8 @@ import javax.persistence.Table;
 @Table(name = "albums")
 public class Album implements Serializable {
 
-	//private static final long serialVersionUID = ;
+	private static final long serialVersionUID = -3236876036458097243L;
+	
 	@Id
 	@Column(name = "album_id")
 	private Long id;

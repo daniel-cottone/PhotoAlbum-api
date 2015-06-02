@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class PhotoInfo implements Serializable {
 
-	//private static final long serialVersionUID = ;
+	private static final long serialVersionUID = 2817453290727069227L;
 	private String title;
 	private String filePath;
 	private Long albumId;

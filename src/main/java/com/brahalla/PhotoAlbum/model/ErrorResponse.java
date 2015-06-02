@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class ErrorResponse implements Serializable {
 
-  //private static final long serialVersionUID = ;
+  private static final long serialVersionUID = -5418511377272830807L;
   private String errorCode;
   private String errorMessage;
 
