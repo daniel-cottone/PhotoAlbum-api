@@ -9,7 +9,6 @@ import java.util.Date;
 public class PhotoFactory {
 
   public static Photo createPhoto(PhotoInfo photoInfo) {
-    System.out.println(photoInfo);
     return new Photo(
       photoInfo.getTitle(),
       new Date(),
