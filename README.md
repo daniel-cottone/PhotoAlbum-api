@@ -4,11 +4,13 @@
 This is an example RESTful API written in Java and Spring Framework. This project is intended to be a demo of how a REST API can be designed and how the project should be structured.
 
 ##Installation
-To run this application you will first need to install a few packages (you can also install these packages with yum, brew, etc.)
+To run this application you will first need to install a few packages: jdk 1.7, maven, and postgresql (you can also install these packages with yum, brew, etc.)
 
-JDK 1.7 - `sudo apt-get install openjdk-7-jre`
-Maven - `sudo apt-get install maven`
-PostgreSQL - `sudo apt-get install postgresql-9.4`
+```
+sudo apt-get install openjdk-7-jre
+sudo apt-get install maven
+sudo apt-get install postgresql-9.4
+```
 
 To build the PostgreSQL database when the API runs, set the following option in application.properties: `spring.datasource.initialize=false`
 
