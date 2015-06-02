@@ -46,14 +46,6 @@ public class Photo implements Serializable {
 		this.setAlbumId(albumId);
 	}
 
-	public Photo(Long id, String title, Date createdDate, String filePath, Long albumId) {
-		this.setId(id);
-		this.setTitle(title);
-		this.setCreatedDate(createdDate);
-		this.setFilePath(filePath);
-		this.setAlbumId(albumId);
-	}
-
 	public Long getId() {
 		return this.id;
 	}
