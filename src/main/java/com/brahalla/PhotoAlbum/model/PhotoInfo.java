@@ -19,6 +19,8 @@ public class PhotoInfo implements Serializable {
 		this.setTitle(title);
 		this.setFilePath(filePath);
 		this.setAlbumId(albumId);
+		System.out.println(albumId);
+		System.out.println(this.albumId);
 	}
 
 	public String getTitle() {
