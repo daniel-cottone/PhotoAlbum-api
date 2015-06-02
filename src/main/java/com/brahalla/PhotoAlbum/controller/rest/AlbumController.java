@@ -25,7 +25,7 @@ public class AlbumController {
   }
 
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
-  public Album getAlbumById(@PathVariable("id") Integer id) {
+  public Album getAlbumById(@PathVariable("id") Long id) {
     return this.albumService.getAlbumById(id);
   }
 
@@ -35,7 +35,7 @@ public class AlbumController {
 	}
 
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-  public Album deleteAlbum(@PathVariable("id") Integer id) {
+  public Album deleteAlbum(@PathVariable("id") Long id) {
     return this.albumService.deleteAlbum(id);
   }
 
