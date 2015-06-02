@@ -6,40 +6,35 @@ import com.brahalla.PhotoAlbum.service.PhotoService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-//@RequestMapping("/api/photos")
+@RestController
+@RequestMapping("/api/photos")
 public class PhotoController {
 
 	@Autowired
 	PhotoService photoService;
 
-  @RequestMapping(value = "/api/photos", method = RequestMethod.POST)
-  @ResponseBody
+  @RequestMapping(method = RequestMethod.POST)
   public Photo createPhoto(@RequestBody Photo photo) {
     return this.photoService.createPhoto(photo);
   }
 
-  @RequestMapping(value = "/api/photos/{id}", method = RequestMethod.GET)
-  @ResponseBody
+  @RequestMapping(value = "{id}", method = RequestMethod.GET)
   public Photo getPhotoById(@PathVariable("id") Integer id) {
     return this.photoService.getPhotoById(id);
   }
 
-	@RequestMapping(value = "/api/photos", method = RequestMethod.GET)
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET)
 	public List<Photo> getPhotoList() {
 		return this.photoService.getPhotoList();
 	}
 
-  @RequestMapping(value = "/api/photos/{id}", method = RequestMethod.DELETE)
-  @ResponseBody
+  @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public Photo deletePhoto(@PathVariable("id") Integer id) {
     return this.photoService.deletePhoto(id);
   }

@@ -6,40 +6,35 @@ import com.brahalla.PhotoAlbum.service.AlbumService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-//@RequestMapping("/api/albums")
+@RestController
+@RequestMapping("/api/albums")
 public class AlbumController {
 
 	@Autowired
 	AlbumService albumService;
 
-  @RequestMapping(value = "/api/albums", method = RequestMethod.POST)
-  @ResponseBody
+  @RequestMapping(method = RequestMethod.POST)
   public Album createAlbum(@RequestBody Album album) {
     return this.albumService.createAlbum(album);
   }
 
-  @RequestMapping(value = "/api/albums/{id}", method = RequestMethod.GET)
-  @ResponseBody
+  @RequestMapping(value = "{id}", method = RequestMethod.GET)
   public Album getAlbumById(@PathVariable("id") Integer id) {
     return this.albumService.getAlbumById(id);
   }
 
-	@RequestMapping(value = "/api/albums", method = RequestMethod.GET)
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET)
 	public List<Album> getAlbumList() {
 		return this.albumService.getAlbumList();
 	}
 
-  @RequestMapping(value = "/api/albums/{id}", method = RequestMethod.DELETE)
-  @ResponseBody
+  @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public Album deleteAlbum(@PathVariable("id") Integer id) {
     return this.albumService.deleteAlbum(id);
   }
