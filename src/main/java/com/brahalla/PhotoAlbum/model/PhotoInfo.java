@@ -41,7 +41,7 @@ public class PhotoInfo implements Serializable {
 		return this.albumId;
 	}
 
-	public void setAlbumId(Long id) {
+	public void setAlbumId(Long albumId) {
 		this.albumId = albumId;
 	}
 

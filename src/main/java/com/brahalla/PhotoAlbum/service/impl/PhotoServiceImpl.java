@@ -22,8 +22,6 @@ public class PhotoServiceImpl implements PhotoService {
 	//@Transactional
   public Photo createPhoto(PhotoInfo photoInfo) {
 		Photo photo = PhotoFactory.createPhoto(photoInfo);
-		System.out.println(photoInfo);
-		System.out.println(photo);
 		return this.photoDao.createPhoto(photo);
   }
 
