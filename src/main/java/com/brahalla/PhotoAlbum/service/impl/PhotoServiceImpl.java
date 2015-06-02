@@ -20,6 +20,7 @@ public class PhotoServiceImpl implements PhotoService {
 	private PhotoDao photoDao;
 
   @Override
+	//@Transactional
   public Photo createPhoto(PhotoInfo photoInfo) {
 		Photo photo = PhotoFactory.createPhoto(photoInfo);
     return this.photoDao.createPhoto(photo);
@@ -36,6 +37,7 @@ public class PhotoServiceImpl implements PhotoService {
   }
 
   @Override
+	//@Transactional
   public Photo deletePhoto(Long id) {
     return this.photoDao.deletePhoto(id);
   }
