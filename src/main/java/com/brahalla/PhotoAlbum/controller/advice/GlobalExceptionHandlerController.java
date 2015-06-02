@@ -14,35 +14,32 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandlerController {
 
-  /*// No page mapping found
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ExceptionHandler({NoHandlerFoundException.class})
-  @ResponseBody
-  public ResponseEntity<ErrorResponse> noHandlerFoundExceptionHandler(NoHandlerFoundException e) {
-    //log.debug("noHandlerFound: stacktrace={}", ExceptionUtils.getStackTrace(e));
-
-    String errorCode = "400 - Bad Request";
-    String errorMsg = "Requested URL doesn't exist";
-
-    return new ResponseEntity<>(new ErrorResponse(errorCode, errorMsg), HttpStatus.BAD_REQUEST);
-  }*/
-
   // Bad JSON request
-	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler({HttpMessageNotReadableException.class})
 	@ResponseBody
-	public Error httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException e) {
-		Error error = new Error("HttpMessageNotReadableException");
-		return error;
+	public ResponseEntity<ErrorResponse> httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException e) {
+		return new ResponseEntity<>(
+			new ErrorResponse(
+				"400 - Bad Request",
+				"Message not readable, improperly formatted request"
+			),
+			HttpStatus.BAD_REQUEST
+		);
 	}
 
   // Generic exception
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler({Exception.class})
   @ResponseBody
-	public Error exceptionHandler(Exception e) {
-    Error error = new Error("Exception");
-		return error;
+	public ResponseEntity<ErrorResponse> exceptionHandler(Exception e) {
+		return new ResponseEntity<>(
+			new ErrorResponse(
+				"500 - Internal Server Error",
+				"Internal server error"
+			),
+			HttpStatus.BAD_REQUEST
+		);
 	}
 
 }
