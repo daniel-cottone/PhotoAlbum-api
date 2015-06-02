@@ -29,12 +29,12 @@ public class AlbumServiceImpl implements AlbumService {
 
   @Override
   public List<Album> getAlbumList() {
-    return this.getAlbumList();
+    return this.albumDao.getAlbumList();
   }
 
   @Override
   public Album deleteAlbum(Long id) {
-    return this.deleteAlbum(id);
+    return this.albumDao.deleteAlbum(id);
   }
 
 }
