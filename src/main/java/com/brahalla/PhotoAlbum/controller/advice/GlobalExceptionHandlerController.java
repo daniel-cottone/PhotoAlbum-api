@@ -2,7 +2,6 @@ package gov.tn.portal.vserv.controller.advice;
 
 import com.brahalla.PhotoAlbum.model.ErrorResponse;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -25,7 +24,7 @@ public class GlobalExceptionHandlerController {
 	@ExceptionHandler({HttpMessageNotReadableException.class})
 	@ResponseBody
 	public ResponseEntity<ErrorResponse> httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException e) {
-		log.debug("httpMessageNotReadableExceptionHandler: stacktrace={}", ExceptionUtils.getStackTrace(e));
+		log.debug("httpMessageNotReadableExceptionHandler: ", e);
 		return new ResponseEntity<>(
 			new ErrorResponse(
 				"400 - Bad Request",
@@ -40,7 +39,7 @@ public class GlobalExceptionHandlerController {
 	@ExceptionHandler({Exception.class})
   @ResponseBody
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception e) {
-		log.debug("exceptionHandler: stacktrace={}", ExceptionUtils.getStackTrace(e));
+		log.debug("exceptionHandler: ", e);
 		return new ResponseEntity<>(
 			new ErrorResponse(
 				"500 - Internal Server Error",
