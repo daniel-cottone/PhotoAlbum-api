@@ -1,5 +1,6 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
+import com.brahalla.PhotoAlbum.domain.Album;
 import com.brahalla.PhotoAlbum.model.AlbumInfo;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
