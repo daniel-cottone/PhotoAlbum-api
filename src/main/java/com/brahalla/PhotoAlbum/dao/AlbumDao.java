@@ -8,10 +8,10 @@ public interface AlbumDao {
 
   public Album createAlbum(Album album);
 
-  public Album getAlbumById(Integer id);
+  public Album getAlbumById(Long id);
 
   public List<Album> getAlbumList();
 
-  public Album deleteAlbum(Integer id);
+  public Album deleteAlbum(Long id);
 
 }

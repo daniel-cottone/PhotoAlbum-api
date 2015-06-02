@@ -14,27 +14,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AlbumServiceImpl implements AlbumService {
 
-	/*@Autowired
-	private AlbumDao albumDao;*/
+	@Autowired
+	private AlbumDao albumDao;
 
   @Override
   public Album createAlbum(Album album) {
-    return new Album();
+    return this.albumDao.createAlbum(album);
   }
 
   @Override
-  public Album getAlbumById(Integer id) {
-    return new Album();
+  public Album getAlbumById(Long id) {
+    return this.albumDao.getAlbumById(id);
   }
 
   @Override
   public List<Album> getAlbumList() {
-    return new LinkedList<Album>();
+    return this.getAlbumList();
   }
 
   @Override
-  public Album deleteAlbum(Integer id) {
-    return new Album();
+  public Album deleteAlbum(Long id) {
+    return this.deleteAlbum(id);
   }
 
 }
