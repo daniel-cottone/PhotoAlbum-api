@@ -2,9 +2,9 @@ package com.brahalla.PhotoAlbum.model;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Min;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Length;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 public class AlbumInfo extends CommonModelBase {
 
