@@ -14,16 +14,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PhotoDaoImpl implements PhotoDao {
 
-  private EntityManager entityManager;
-
-	public EntityManager getEntityManager() {
-		return this.entityManager;
-	}
-
   @PersistenceContext
-  public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-  }
+  private EntityManager entityManager;
 
   @Override
   public Photo createPhoto(Photo photo) {
@@ -43,8 +35,8 @@ public class PhotoDaoImpl implements PhotoDao {
 
   @Override
   public List<Photo> getPhotoList() {
-    String sql = "select p from Photo as p";
-    Query query = this.entityManager.createQuery(sql);
+    String jpql = "select p from Photo as p";
+    Query query = this.entityManager.createQuery(jpql);
     return query.getResultList();
   }
 

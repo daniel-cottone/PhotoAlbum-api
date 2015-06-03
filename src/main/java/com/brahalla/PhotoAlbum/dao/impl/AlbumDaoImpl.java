@@ -14,16 +14,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AlbumDaoImpl implements AlbumDao {
 
-  private EntityManager entityManager;
-
-	public EntityManager getEntityManager() {
-		return this.entityManager;
-	}
-
   @PersistenceContext
-  public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-  }
+  private EntityManager entityManager;
 
   @Override
   public Album createAlbum(Album album) {
@@ -43,8 +35,8 @@ public class AlbumDaoImpl implements AlbumDao {
 
   @Override
   public List<Album> getAlbumList() {
-    String sql = "select a from Album as a";
-    Query query = this.entityManager.createQuery(sql);
+    String jpql = "select a from Album as a";
+    Query query = this.entityManager.createQuery(jpql);
     return query.getResultList();
   }
 
