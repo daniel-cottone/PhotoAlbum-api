@@ -1,9 +1,6 @@
 package com.brahalla.PhotoAlbum.model;
 
-import java.io.Serializable;
-
-
-public class ErrorResponse implements Serializable {
+public class ErrorResponse extends CommonModelBase {
 
   private static final long serialVersionUID = -5418511377272830807L;
   private String errorCode;
@@ -33,20 +30,5 @@ public class ErrorResponse implements Serializable {
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
-
-  public String toString() {
-
-		final String tab = "    ";
-
-		StringBuilder retValue = new StringBuilder();
-
-		retValue.append("ErrorResponse ( ")
-			.append(super.toString()).append(tab)
-			.append("errorCode = ").append(this.errorCode).append(tab)
-      .append("errorMessage = ").append(this.errorMessage).append(tab)
-			.append(" )");
-
-		return retValue.toString();
-	}
 
 }

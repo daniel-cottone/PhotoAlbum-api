@@ -1,10 +1,8 @@
 package com.brahalla.PhotoAlbum.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-
-public class AlbumInfo implements Serializable {
+public class AlbumInfo extends CommonModelBase {
 
 	private static final long serialVersionUID = -7086382610728542290L;
 	private String title;
@@ -34,21 +32,5 @@ public class AlbumInfo implements Serializable {
 	public void setCoverPhotoId(Long coverPhotoId) {
 		this.coverPhotoId = coverPhotoId;
 	}
-
-	public String toString() {
-
-		final String tab = "    ";
-
-		StringBuilder retValue = new StringBuilder();
-
-		retValue.append("AlbumInfo ( ")
-			.append(super.toString()).append(tab)
-			.append("title = ").append(this.title).append(tab)
-			.append("coverPhotoId = ").append(this.coverPhotoId).append(tab)
-			.append(" )");
-
-		return retValue.toString();
-	}
-
 
 }
