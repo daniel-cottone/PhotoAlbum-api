@@ -6,6 +6,8 @@ import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,7 @@ public class PhotoController {
 	 * REQUEST: POST /api/photos
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Photo createPhoto(@RequestBody PhotoInfo photoInfo) {
+  public Photo createPhoto(@Valid @RequestBody PhotoInfo photoInfo) {
     return this.photoService.createPhoto(photoInfo);
   }
 
@@ -48,7 +50,7 @@ public class PhotoController {
 	 * REQUEST: PUT /api/photos/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Photo updatePhoto(@PathVariable("id") Long id, @RequestBody PhotoInfo photoInfo) {
+  public Photo updatePhoto(@PathVariable("id") Long id, @Valid @RequestBody PhotoInfo photoInfo) {
     return this.photoService.updatePhoto(id, photoInfo);
   }
 

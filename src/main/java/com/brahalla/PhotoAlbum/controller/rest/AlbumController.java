@@ -6,6 +6,8 @@ import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,7 @@ public class AlbumController {
 	 * POST /api/albums
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Album createAlbum(@RequestBody AlbumInfo albumInfo) {
+  public Album createAlbum(@Valid @RequestBody AlbumInfo albumInfo) {
     return this.albumService.createAlbum(albumInfo);
   }
 
@@ -48,7 +50,7 @@ public class AlbumController {
 	 * REQUEST: PUT /api/albums/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Album updateAlbum(@PathVariable("id") Long id, @RequestBody AlbumInfo albumInfo) {
+  public Album updateAlbum(@PathVariable("id") Long id, @Valid @RequestBody AlbumInfo albumInfo) {
     return this.albumService.updateAlbum(id, albumInfo);
   }
 

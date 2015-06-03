@@ -2,6 +2,10 @@ package com.brahalla.PhotoAlbum.model;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Min;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class PhotoInfo extends CommonModelBase {
 
 	private static final long serialVersionUID = 2817453290727069227L;
@@ -19,6 +23,8 @@ public class PhotoInfo extends CommonModelBase {
 		this.setAlbumId(albumId);
 	}
 
+	@NotEmpty
+	@Length(max = 50)
 	public String getTitle() {
 		return this.title;
 	}
@@ -27,6 +33,8 @@ public class PhotoInfo extends CommonModelBase {
 		this.title = title;
 	}
 
+	@NotEmpty
+	@Length(max = 100)
 	public String getFilePath() {
 		return this.filePath;
 	}
@@ -35,6 +43,8 @@ public class PhotoInfo extends CommonModelBase {
 		this.filePath = filePath;
 	}
 
+	@NotEmpty
+	@Min(1)
 	public Long getAlbumId() {
 		return this.albumId;
 	}
