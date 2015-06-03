@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "albums")
@@ -52,6 +53,7 @@ public class Album extends CommonDomainBase {
 	}
 
 	@Column(name = "created_date")
+	@Temporal(DATE)
 	public Date getCreatedDate() {
 		return this.createdDate;
 	}
