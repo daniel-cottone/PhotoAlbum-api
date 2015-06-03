@@ -48,7 +48,7 @@ ALTER TABLE albums OWNER TO photoalbum;
 --
 
 CREATE SEQUENCE albums_album_id_seq
-    START WITH 1
+    START WITH 3
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -84,7 +84,7 @@ ALTER TABLE photos OWNER TO photoalbum;
 --
 
 CREATE SEQUENCE photos_photo_id_seq
-    START WITH 1
+    START WITH 6
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
