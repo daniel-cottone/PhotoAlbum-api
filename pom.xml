@@ -19,7 +19,8 @@
     <hibernate.version>4.3.10.Final</hibernate.version>
     <postgresql.version>9.4-1201-jdbc41</postgresql.version>
     <jackson.version>2.5.3</jackson.version>
-    <junit.version>3.8.1</junit.version>
+    <apache-commons.version>3.0</apache-commons.version>
+    <junit.version>4.12</junit.version>
   </properties>
 
   <!-- Parent information -->
@@ -68,6 +69,11 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${apache-commons.version}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
