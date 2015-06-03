@@ -88,9 +88,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <compilerArgs>
-          <arg>-Xlint:unchecked</arg>
-        </compilerArgs>
+        <compilerArgument>-Xlint:unchecked</compilerArgument>
       </plugin>
     </plugins>
   </build>
