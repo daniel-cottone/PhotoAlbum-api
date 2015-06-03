@@ -42,8 +42,6 @@ public class PhotoServiceImpl implements PhotoService {
 		photo.setTitle(photoInfo.getTitle());
 		photo.setFilePath(photoInfo.getFilePath());
 		photo.setAlbumId(photoInfo.getAlbumId());
-		System.out.println(photoInfo);
-		System.out.println(photo);
 		return this.photoDao.updatePhoto(photo);
 	}
 
