@@ -2,9 +2,9 @@ package com.brahalla.PhotoAlbum.model;
 
 import java.util.Date;
 
-import javax.validation.constraints.Length;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 public class PhotoInfo extends CommonModelBase {
 
@@ -44,7 +44,7 @@ public class PhotoInfo extends CommonModelBase {
 	}
 
 	@NotEmpty
-	@Min(1)
+	@Range(min = 1)
 	public Long getAlbumId() {
 		return this.albumId;
 	}
