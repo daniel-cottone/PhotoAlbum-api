@@ -48,7 +48,7 @@ public class PhotoController {
 	 * PUT /api/photos/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Photo updatePhoto(@PathVariable("id") Long id, PhotoInfo photoInfo) {
+  public Photo updatePhoto(@PathVariable("id") Long id, @RequestBody PhotoInfo photoInfo) {
     return this.photoService.updatePhoto(id, photoInfo);
   }
 
