@@ -43,7 +43,6 @@ public class PhotoInfo extends CommonModelBase {
 		this.filePath = filePath;
 	}
 
-	@NotEmpty
 	@Range(min = 1)
 	public Long getAlbumId() {
 		return this.albumId;

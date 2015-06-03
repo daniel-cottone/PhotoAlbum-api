@@ -31,7 +31,6 @@ public class AlbumInfo extends CommonModelBase {
 		this.title = title;
 	}
 
-	@NotEmpty
 	@Range(min = 1)
 	public Long getCoverPhotoId() {
 		return this.coverPhotoId;
