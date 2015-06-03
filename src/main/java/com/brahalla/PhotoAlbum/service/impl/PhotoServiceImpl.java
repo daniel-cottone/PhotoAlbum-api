@@ -8,6 +8,7 @@ import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,9 +40,7 @@ public class PhotoServiceImpl implements PhotoService {
 	@Transactional
 	public Photo updatePhoto(Long id, PhotoInfo photoInfo) {
 		Photo photo = this.photoDao.getPhotoById(id);
-		photo.setTitle(photoInfo.getTitle());
-		photo.setFilePath(photoInfo.getFilePath());
-		photo.setAlbumId(photoInfo.getAlbumId());
+		BeanUtils.copyProperties(photoInfo, photo);
 		return this.photoDao.updatePhoto(photo);
 	}
 

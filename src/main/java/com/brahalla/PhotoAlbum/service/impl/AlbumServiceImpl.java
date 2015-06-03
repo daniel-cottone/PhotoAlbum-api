@@ -8,6 +8,7 @@ import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,8 +40,7 @@ public class AlbumServiceImpl implements AlbumService {
 	@Transactional
 	public Album updateAlbum(Long id, AlbumInfo albumInfo) {
 		Album album = this.albumDao.getAlbumById(id);
-		album.setTitle(albumInfo.getTitle());
-		album.setCoverPhotoId(albumInfo.getCoverPhotoId());
+		BeanUtils.copyProperties(albumInfo, album);
 		return this.albumDao.updateAlbum(album);
 	}
 
