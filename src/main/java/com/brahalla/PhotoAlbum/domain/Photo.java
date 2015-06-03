@@ -1,6 +1,5 @@
 package com.brahalla.PhotoAlbum.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,26 +12,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "photos")
-public class Photo implements Serializable {
+public class Photo extends CommonDomainBase {
 
 	private static final long serialVersionUID = 4223487423467416073L;
-
-	@Id
-	@Column(name = "photo_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "photos_photo_id_seq")
-	@SequenceGenerator(name = "photos_photo_id_seq", sequenceName = "photos_photo_id_seq", allocationSize = 1)
 	private Long id;
-
-	@Column(name = "title")
 	private String title;
-
-	@Column(name = "created_date")
 	private Date createdDate;
-
-	@Column(name = "file_path")
 	private String filePath;
-
-	@Column(name = "album_id")
 	private Long albumId;
 
 	public Photo() {
@@ -46,6 +32,10 @@ public class Photo implements Serializable {
 		this.setAlbumId(albumId);
 	}
 
+	@Id
+	@Column(name = "photo_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "photos_photo_id_seq")
+	@SequenceGenerator(name = "photos_photo_id_seq", sequenceName = "photos_photo_id_seq", allocationSize = 1)
 	public Long getId() {
 		return this.id;
 	}
@@ -54,6 +44,7 @@ public class Photo implements Serializable {
 		this.id = id;
 	}
 
+	@Column(name = "title")
 	public String getTitle() {
 		return this.title;
 	}
@@ -62,6 +53,7 @@ public class Photo implements Serializable {
 		this.title = title;
 	}
 
+	@Column(name = "created_date")
 	public Date getCreatedDate() {
 		return this.createdDate;
 	}
@@ -70,6 +62,7 @@ public class Photo implements Serializable {
 		this.createdDate = createdDate;
 	}
 
+	@Column(name = "file_path")
 	public String getFilePath() {
 		return this.filePath;
 	}
@@ -78,6 +71,7 @@ public class Photo implements Serializable {
 		this.filePath = filePath;
 	}
 
+	@Column(name = "album_id")
 	public Long getAlbumId() {
 		return this.albumId;
 	}
@@ -85,24 +79,5 @@ public class Photo implements Serializable {
 	public void setAlbumId(Long albumId) {
 		this.albumId = albumId;
 	}
-
-	public String toString() {
-
-		final String tab = "    ";
-
-		StringBuilder retValue = new StringBuilder();
-
-		retValue.append("Photo ( ")
-			.append(super.toString()).append(tab)
-			.append("id = ").append(this.id).append(tab)
-			.append("title = ").append(this.title).append(tab)
-			.append("createdDate = ").append(this.createdDate).append(tab)
-			.append("filePath = ").append(this.filePath).append(tab)
-			.append("albumId = ").append(this.albumId).append(tab)
-			.append(" )");
-
-		return retValue.toString();
-	}
-
 
 }

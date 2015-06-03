@@ -1,6 +1,5 @@
 package com.brahalla.PhotoAlbum.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,26 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "albums")
-public class Album implements Serializable {
+public class Album extends CommonDomainBase {
 
 	private static final long serialVersionUID = -3236876036458097243L;
-
-	@Id
-	@Column(name = "album_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_album_id_seq")
-	@SequenceGenerator(name = "albums_album_id_seq", sequenceName = "albums_album_id_seq", allocationSize = 1)
 	private Long id;
-
-	@Column(name = "title")
 	private String title;
-
-	@Column(name = "created_date")
 	private Date createdDate;
-
-	@Column(name = "cover_photo_id")
 	private Long coverPhotoId;
 
 	public Album() {
@@ -43,6 +30,10 @@ public class Album implements Serializable {
 		this.setCoverPhotoId(coverPhotoId);
 	}
 
+	@Id
+	@Column(name = "album_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_album_id_seq")
+	@SequenceGenerator(name = "albums_album_id_seq", sequenceName = "albums_album_id_seq", allocationSize = 1)
 	public Long getId() {
 		return this.id;
 	}
@@ -51,6 +42,7 @@ public class Album implements Serializable {
 		this.id = id;
 	}
 
+	@Column(name = "title")
 	public String getTitle() {
 		return this.title;
 	}
@@ -59,6 +51,7 @@ public class Album implements Serializable {
 		this.title = title;
 	}
 
+	@Column(name = "created_date")
 	public Date getCreatedDate() {
 		return this.createdDate;
 	}
@@ -67,6 +60,7 @@ public class Album implements Serializable {
 		this.createdDate = createdDate;
 	}
 
+	@Column(name = "cover_photo_id")
 	public Long getCoverPhotoId() {
 		return this.coverPhotoId;
 	}
@@ -74,23 +68,5 @@ public class Album implements Serializable {
 	public void setCoverPhotoId(Long coverPhotoId) {
 		this.coverPhotoId = coverPhotoId;
 	}
-
-	public String toString() {
-
-		final String tab = "    ";
-
-		StringBuilder retValue = new StringBuilder();
-
-		retValue.append("Album ( ")
-			.append(super.toString()).append(tab)
-			.append("id = ").append(this.id).append(tab)
-			.append("title = ").append(this.title).append(tab)
-			.append("createdDate = ").append(this.createdDate).append(tab)
-			.append("coverPhotoId = ").append(this.coverPhotoId).append(tab)
-			.append(" )");
-
-		return retValue.toString();
-	}
-
 
 }
