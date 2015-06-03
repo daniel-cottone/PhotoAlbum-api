@@ -48,7 +48,7 @@ public class AlbumController {
 	 * PUT /api/albums/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Album updateAlbum(@PathVariable("id") Long id, AlbumInfo albumInfo) {
+  public Album updateAlbum(@PathVariable("id") Long id, @RequestBody AlbumInfo albumInfo) {
     return this.albumService.updateAlbum(id, albumInfo);
   }
 
