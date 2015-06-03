@@ -25,7 +25,7 @@ public class GlobalExceptionHandlerController {
 	@ResponseBody
 	public ResponseEntity<ErrorResponse> httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException e) {
 		log.debug("httpMessageNotReadableExceptionHandler: ", e);
-		return new ResponseEntity<>(
+		return new ResponseEntity<ErrorResponse>(
 			new ErrorResponse(
 				"400 - Bad Request",
 				"Message not readable, improperly formatted request"
@@ -40,7 +40,7 @@ public class GlobalExceptionHandlerController {
   @ResponseBody
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception e) {
 		log.debug("exceptionHandler: ", e);
-		return new ResponseEntity<>(
+		return new ResponseEntity<ErrorResponse>(
 			new ErrorResponse(
 				"500 - Internal Server Error",
 				"Internal server error"
