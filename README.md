@@ -12,15 +12,13 @@ sudo apt-get install maven
 sudo apt-get install postgresql-9.4
 ```
 
-You will need to modify the file `src\main\resources\application.properties` to reflect the connection information for your postgresql installation:
+You will need to modify the file `src\main\resources\application.properties` to reflect the connection information for your postgresql installation, database, and username/password:
 
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/photoalbum
 spring.datasource.username=photoalbum
 spring.datasource.password=photoalbum
 ```
-
-To build the PostgreSQL database when the API runs, set the following option: `spring.datasource.initialize=true`
 
 This project is built using Spring Boot/Spring Actuator, which makes it very easy to get running. You can either run the application directly from maven: `mvn spring-boot:run`, or you can build the application package with `mvn clean package` and then run the jar directly: `java -jar target/PhotoAlbum-1.0-SNAPSHOT.jar`.
 
