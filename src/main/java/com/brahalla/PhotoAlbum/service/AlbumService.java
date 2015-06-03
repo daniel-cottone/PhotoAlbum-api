@@ -13,6 +13,8 @@ public interface AlbumService {
 
   public List<Album> getAlbumList();
 
+  public Album updateAlbum(Long id, AlbumInfo albumInfo);
+
   public Album deleteAlbum(Long id);
 
 }

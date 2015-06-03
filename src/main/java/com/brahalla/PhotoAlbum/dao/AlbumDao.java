@@ -12,6 +12,8 @@ public interface AlbumDao {
 
   public List<Album> getAlbumList();
 
+  public Album updateAlbum(Album album);
+
   public Album deleteAlbum(Long id);
 
 }

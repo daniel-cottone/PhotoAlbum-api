@@ -13,6 +13,8 @@ public interface PhotoService {
 
   public List<Photo> getPhotoList();
 
+  public Photo updatePhoto(Long id, PhotoInfo photoInfo);
+
   public Photo deletePhoto(Long id);
 
 }

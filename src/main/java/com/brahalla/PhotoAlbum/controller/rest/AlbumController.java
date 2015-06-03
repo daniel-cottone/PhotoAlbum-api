@@ -44,6 +44,14 @@ public class AlbumController {
 		return this.albumService.getAlbumList();
 	}
 
+	/* UPDATE - update an album
+	 * PUT /api/albums/{id}
+	 */
+	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
+  public Album updateAlbum(@PathVariable("id") Long id, AlbumInfo albumInfo) {
+    return this.albumService.updateAlbum(id, albumInfo);
+  }
+
 	/* DELETE - delete an album
 	 * DELETE /api/albums/{id}
 	 */

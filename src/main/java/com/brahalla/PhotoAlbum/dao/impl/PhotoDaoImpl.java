@@ -49,6 +49,17 @@ public class PhotoDaoImpl implements PhotoDao {
   }
 
   @Override
+  public Photo updatePhoto(Photo photo) {
+    if (photo.getId() != null) {
+      entityManager.merge(photo);
+    }
+    else {
+      // TODO
+    }
+    return photo;
+  }
+
+  @Override
   public Photo deletePhoto(Long id) {
     Photo photo = this.getPhotoById(id);
     this.entityManager.remove(photo);

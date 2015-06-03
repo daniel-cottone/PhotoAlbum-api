@@ -35,6 +35,15 @@ public class AlbumServiceImpl implements AlbumService {
     return this.albumDao.getAlbumList();
   }
 
+	@Override
+	//@Transactional
+	public Album updateAlbum(Long id, AlbumInfo albumInfo) {
+		Album album = this.albumDao.getAlbumById(id);
+		album.setTitle(albumInfo.getTitle());
+		album.setCoverPhotoId(albumInfo.getCoverPhotoId());
+		return this.albumDao.updateAlbum(album);
+	}
+
   @Override
 	//@Transactional
   public Album deleteAlbum(Long id) {

@@ -49,6 +49,17 @@ public class AlbumDaoImpl implements AlbumDao {
   }
 
   @Override
+  public Album updateAlbum(Album album) {
+    if (album.getId() != null) {
+      entityManager.merge(album);
+    }
+    else {
+      // TODO
+    }
+    return album;
+  }
+
+  @Override
   public Album deleteAlbum(Long id) {
     Album album = this.getAlbumById(id);
     this.entityManager.remove(album);
