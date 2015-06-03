@@ -19,7 +19,7 @@ public class AlbumServiceImpl implements AlbumService {
 	private AlbumDao albumDao;
 
   @Override
-	//@Transactional
+	@Transactional
   public Album createAlbum(AlbumInfo albumInfo) {
 		Album album = AlbumFactory.createAlbum(albumInfo);
     return this.albumDao.createAlbum(album);
@@ -36,7 +36,7 @@ public class AlbumServiceImpl implements AlbumService {
   }
 
 	@Override
-	//@Transactional
+	@Transactional
 	public Album updateAlbum(Long id, AlbumInfo albumInfo) {
 		Album album = this.albumDao.getAlbumById(id);
 		album.setTitle(albumInfo.getTitle());
@@ -45,7 +45,7 @@ public class AlbumServiceImpl implements AlbumService {
 	}
 
   @Override
-	//@Transactional
+	@Transactional
   public Album deleteAlbum(Long id) {
     return this.albumDao.deleteAlbum(id);
   }
