@@ -29,7 +29,7 @@ public class AlbumController {
   }
 
 	/* READ - read an album
-	 * GET /api/albums/{id}
+	 * REQUEST: GET /api/albums/{id}
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
   public Album getAlbumById(@PathVariable("id") Long id) {
@@ -37,7 +37,7 @@ public class AlbumController {
   }
 
 	/* READ - read all albums
-	 * GET /api/albums
+	 * REQUEST: GET /api/albums
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Album> getAlbumList() {
@@ -45,7 +45,7 @@ public class AlbumController {
 	}
 
 	/* UPDATE - update an album
-	 * PUT /api/albums/{id}
+	 * REQUEST: PUT /api/albums/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
   public Album updateAlbum(@PathVariable("id") Long id, @RequestBody AlbumInfo albumInfo) {
@@ -53,7 +53,7 @@ public class AlbumController {
   }
 
 	/* DELETE - delete an album
-	 * DELETE /api/albums/{id}
+	 * REQUEST: DELETE /api/albums/{id}
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public Album deleteAlbum(@PathVariable("id") Long id) {

@@ -21,7 +21,7 @@ public class PhotoController {
 	PhotoService photoService;
 
 	/* CREATE - create a photo
-	 * POST /api/photos
+	 * REQUEST: POST /api/photos
 	 */
   @RequestMapping(method = RequestMethod.POST)
   public Photo createPhoto(@RequestBody PhotoInfo photoInfo) {
@@ -29,7 +29,7 @@ public class PhotoController {
   }
 
 	/* READ - read a photo
-	 * GET /api/photos/{id}
+	 * REQUEST: GET /api/photos/{id}
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
   public Photo getPhotoById(@PathVariable("id") Long id) {
@@ -37,7 +37,7 @@ public class PhotoController {
   }
 
 	/* READ - read all photos
-	 * GET /api/photos
+	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Photo> getPhotoList() {
@@ -45,7 +45,7 @@ public class PhotoController {
 	}
 
 	/* UPDATE - update a photo
-	 * PUT /api/photos/{id}
+	 * REQUEST: PUT /api/photos/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
   public Photo updatePhoto(@PathVariable("id") Long id, @RequestBody PhotoInfo photoInfo) {
@@ -53,7 +53,7 @@ public class PhotoController {
   }
 
 	/* DELETE - delete a photo
-	 * DELETE /api/photos/{id}
+	 * REQUEST: DELETE /api/photos/{id}
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public Photo deletePhoto(@PathVariable("id") Long id) {
