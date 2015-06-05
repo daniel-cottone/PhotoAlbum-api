@@ -12,6 +12,8 @@ public interface PhotoDao {
 
   public List<Photo> getPhotoList();
 
+  public List<Photo> getPhotoListByAlbumId(Long albumId);
+
   public Photo updatePhoto(Photo photo);
 
   public Photo deletePhoto(Long id);
