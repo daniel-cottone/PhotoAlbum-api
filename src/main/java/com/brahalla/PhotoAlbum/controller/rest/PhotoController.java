@@ -44,7 +44,7 @@ public class PhotoController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Photo> getPhotoList(@RequestParam(value = "albumId", required = false) String albumId) {
-		if (albumId) {
+		if (albumId != null) {
 			return this.photoService.getPhotoListByAlbumId(Long.valueOf(albumId));
 		} else {
 			return this.photoService.getPhotoList();
