@@ -43,21 +43,13 @@ public class PhotoController {
 	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Photo> getPhotoList(@RequestParam(value = "albumId", required = false) String albumId) {
+	public List<Photo> getPhotoList(@RequestParam(value = "albumId", required = false) Long albumId) {
 		if (albumId != null) {
-			return this.photoService.getPhotoListByAlbumId(Long.valueOf(albumId));
+			return this.photoService.getPhotoListByAlbumId(albumId);
 		} else {
 			return this.photoService.getPhotoList();
 		}
 	}
-
-	/* READ - read photos with matching albumId
-	 * REQUEST: GET /api/photos?albumId={id}
-	 */
-	/*@RequestMapping(method = RequestMethod.GET)
-	public List<Photo> getPhotoListByAlbumId(@RequestParam(value = "albumId") String albumId) {
-		return this.photoService.getPhotoListByAlbumId(Long.valueOf(albumId));
-	}*/
 
 	/* UPDATE - update a photo
 	 * REQUEST: PUT /api/photos/{id}
