@@ -51,8 +51,8 @@ public class PhotoController {
 	 * REQUEST: GET /api/photos?albumId={id}
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Photo> getPhotoListByAlbumId(@RequestParam(value = "albumId") Long albumId) {
-		return this.photoService.getPhotoListByAlbumId(albumId);
+	public List<Photo> getPhotoListByAlbumId(@RequestParam(value = "albumId") String albumId) {
+		return this.photoService.getPhotoListByAlbumId(Long.valueOf(albumId));
 	}
 
 	/* UPDATE - update a photo
