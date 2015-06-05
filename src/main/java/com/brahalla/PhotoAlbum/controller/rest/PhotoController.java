@@ -39,7 +39,7 @@ public class PhotoController {
     return this.photoService.getPhotoById(id);
   }
 
-	/* READ - read all photos
+	/* READ - read a list of photos matching request params
 	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
