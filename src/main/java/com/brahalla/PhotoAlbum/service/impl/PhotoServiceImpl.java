@@ -37,6 +37,11 @@ public class PhotoServiceImpl implements PhotoService {
   }
 
 	@Override
+	public List<Photo> getPhotoListByAlbumId(Long albumId) {
+		return this.photoDao.getPhotoListByAlbumId(albumId);
+	}
+
+	@Override
 	@Transactional
 	public Photo updatePhoto(Long id, PhotoInfo photoInfo) {
 		Photo photo = this.photoDao.getPhotoById(id);

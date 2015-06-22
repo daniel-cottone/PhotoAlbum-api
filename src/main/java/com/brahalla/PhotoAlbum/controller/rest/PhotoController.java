@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -38,12 +39,16 @@ public class PhotoController {
     return this.photoService.getPhotoById(id);
   }
 
-	/* READ - read all photos
+	/* READ - read a list of photos matching request params
 	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Photo> getPhotoList() {
-		return this.photoService.getPhotoList();
+	public List<Photo> getPhotoList(@RequestParam(value = "albumId", required = false) Long albumId) {
+		if (albumId != null) {
+			return this.photoService.getPhotoListByAlbumId(albumId);
+		} else {
+			return this.photoService.getPhotoList();
+		}
 	}
 
 	/* UPDATE - update a photo

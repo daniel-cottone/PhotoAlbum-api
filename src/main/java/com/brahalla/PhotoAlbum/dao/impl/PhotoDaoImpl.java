@@ -41,6 +41,14 @@ public class PhotoDaoImpl implements PhotoDao {
   }
 
   @Override
+  public List<Photo> getPhotoListByAlbumId(Long albumId) {
+    String jpql = "select p from Photo as p where p.albumId = :albumId";
+    Query query = this.entityManager.createQuery(jpql);
+    query.setParameter("albumId", albumId);
+    return query.getResultList();
+  }
+
+  @Override
   public Photo updatePhoto(Photo photo) {
     if (photo.getId() != null) {
       entityManager.merge(photo);
