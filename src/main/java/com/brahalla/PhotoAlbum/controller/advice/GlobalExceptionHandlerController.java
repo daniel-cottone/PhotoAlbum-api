@@ -1,4 +1,4 @@
-package gov.tn.portal.vserv.controller.advice;
+package com.brahalla.PhotoAlbum.controller.advice;
 
 import com.brahalla.PhotoAlbum.model.ErrorResponse;
 
