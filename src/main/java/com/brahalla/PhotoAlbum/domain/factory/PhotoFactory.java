@@ -1,4 +1,4 @@
-package com.brahalla.PhotoAlbum.factory;
+package com.brahalla.PhotoAlbum.domain.factory;
 
 import com.brahalla.PhotoAlbum.domain.entity.Photo;
 import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
