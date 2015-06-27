@@ -1,7 +1,7 @@
 #PhotoAlbum
 
 ##About
-This is an example RESTful API written in Java and Spring Framework. This project is intended to be a demonstration of how a REST API can be structured and designed with Spring Boot/Actuator and Spring Data.
+This is an example RESTful API written in Java and Spring Framework. This project is intended to be a demonstration of how a REST API can be structured and designed using Spring Boot/Actuator, Spring Data, Spring Security, and Hibernate.
 
 ##Installation
 To run this application you will first need to install a few packages: jdk 1.7, maven, and postgresql (you can also install these packages with yum, brew, etc.)
