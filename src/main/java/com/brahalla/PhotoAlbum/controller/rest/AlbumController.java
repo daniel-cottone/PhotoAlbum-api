@@ -60,8 +60,7 @@ public class AlbumController {
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public Album deleteAlbum(@PathVariable("id") Long id) {
-    this.albumService.deleteAlbum(id);
-		return new Album();
+    return this.albumService.deleteAlbum(id);
   }
 
 }
