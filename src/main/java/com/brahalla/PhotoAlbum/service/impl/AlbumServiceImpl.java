@@ -33,7 +33,7 @@ public class AlbumServiceImpl implements AlbumService {
 
   @Override
   public List<Album> getAlbumList() {
-    return this.albumRepository.findAll();
+    return (List<Album>) this.albumRepository.findAll();
   }
 
 	@Override
