@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserInfo extends CommonModelBase {
 
-	//private static final long serialVersionUID = ;
+	private static final long serialVersionUID = 6624726180748515507L;
 	private String username;
 	private String password;
 

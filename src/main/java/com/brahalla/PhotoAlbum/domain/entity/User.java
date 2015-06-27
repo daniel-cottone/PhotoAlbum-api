@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User extends CommonDomainBase {
 
-	//private static final long serialVersionUID = ;
+	private static final long serialVersionUID = -368900577249674356L;
 	private Long id;
 	private String username;
 	private String password;
