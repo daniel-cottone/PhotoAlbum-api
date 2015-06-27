@@ -1,9 +1,9 @@
 package com.brahalla.PhotoAlbum.service.impl;
 
 import com.brahalla.PhotoAlbum.dao.PhotoDao;
-import com.brahalla.PhotoAlbum.domain.Photo;
-import com.brahalla.PhotoAlbum.factory.PhotoFactory;
-import com.brahalla.PhotoAlbum.model.PhotoInfo;
+import com.brahalla.PhotoAlbum.domain.entity.Photo;
+import com.brahalla.PhotoAlbum.domain.factory.PhotoFactory;
+import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;

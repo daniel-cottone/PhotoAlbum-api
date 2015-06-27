@@ -1,4 +1,6 @@
-package com.brahalla.PhotoAlbum.domain;
+package com.brahalla.PhotoAlbum.domain.entity;
+
+import com.brahalla.PhotoAlbum.domain.base.CommonDomainBase;
 
 import java.util.Date;
 
@@ -13,31 +15,29 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "photos")
-public class Photo extends CommonDomainBase {
+@Table(name = "albums")
+public class Album extends CommonDomainBase {
 
-	private static final long serialVersionUID = 4223487423467416073L;
+	private static final long serialVersionUID = -3236876036458097243L;
 	private Long id;
 	private String title;
 	private Date createdDate;
-	private String filePath;
-	private Long albumId;
+	private Long coverPhotoId;
 
-	public Photo() {
+	public Album() {
 		super();
 	}
 
-	public Photo(String title, Date createdDate, String filePath, Long albumId) {
+	public Album(String title, Date createdDate, Long coverPhotoId) {
 		this.setTitle(title);
 		this.setCreatedDate(createdDate);
-		this.setFilePath(filePath);
-		this.setAlbumId(albumId);
+		this.setCoverPhotoId(coverPhotoId);
 	}
 
 	@Id
-	@Column(name = "photo_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "photos_photo_id_seq")
-	@SequenceGenerator(name = "photos_photo_id_seq", sequenceName = "photos_photo_id_seq", allocationSize = 1)
+	@Column(name = "album_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_album_id_seq")
+	@SequenceGenerator(name = "albums_album_id_seq", sequenceName = "albums_album_id_seq", allocationSize = 1)
 	public Long getId() {
 		return this.id;
 	}
@@ -65,22 +65,13 @@ public class Photo extends CommonDomainBase {
 		this.createdDate = createdDate;
 	}
 
-	@Column(name = "file_path")
-	public String getFilePath() {
-		return this.filePath;
+	@Column(name = "cover_photo_id")
+	public Long getCoverPhotoId() {
+		return this.coverPhotoId;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
-	@Column(name = "album_id")
-	public Long getAlbumId() {
-		return this.albumId;
-	}
-
-	public void setAlbumId(Long albumId) {
-		this.albumId = albumId;
+	public void setCoverPhotoId(Long coverPhotoId) {
+		this.coverPhotoId = coverPhotoId;
 	}
 
 }

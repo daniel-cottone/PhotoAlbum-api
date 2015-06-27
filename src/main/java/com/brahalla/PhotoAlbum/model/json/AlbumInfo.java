@@ -1,4 +1,6 @@
-package com.brahalla.PhotoAlbum.model;
+package com.brahalla.PhotoAlbum.model.json;
+
+import com.brahalla.PhotoAlbum.model.base.CommonModelBase;
 
 import java.util.Date;
 

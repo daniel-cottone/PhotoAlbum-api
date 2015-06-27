@@ -1,7 +1,7 @@
 package com.brahalla.PhotoAlbum.factory;
 
-import com.brahalla.PhotoAlbum.domain.Photo;
-import com.brahalla.PhotoAlbum.model.PhotoInfo;
+import com.brahalla.PhotoAlbum.domain.entity.Photo;
+import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
 
 import java.util.Date;
 

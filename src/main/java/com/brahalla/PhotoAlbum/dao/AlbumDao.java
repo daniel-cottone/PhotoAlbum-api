@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.dao;
 
-import com.brahalla.PhotoAlbum.domain.Album;
+import com.brahalla.PhotoAlbum.domain.entity.Album;
 
 import java.util.List;
 

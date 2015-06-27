@@ -1,7 +1,7 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
-import com.brahalla.PhotoAlbum.domain.Photo;
-import com.brahalla.PhotoAlbum.model.PhotoInfo;
+import com.brahalla.PhotoAlbum.domain.entity.Photo;
+import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;

@@ -1,4 +1,6 @@
-package com.brahalla.PhotoAlbum.model;
+package com.brahalla.PhotoAlbum.model.error;
+
+import com.brahalla.PhotoAlbum.model.base.CommonModelBase;
 
 public class ErrorResponse extends CommonModelBase {
 
