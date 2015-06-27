@@ -12,18 +12,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User extends CommonDomainBase {
+public class Account extends CommonDomainBase {
 
 	private static final long serialVersionUID = -368900577249674356L;
 	private Long id;
 	private String username;
 	private String password;
 
-	public User() {
+	public Account() {
 		super();
 	}
 
-	public User(String username, String password) {
+	public Account(String username, String password) {
 		this.setUsername(username);
 		this.setPassword(password);
 	}

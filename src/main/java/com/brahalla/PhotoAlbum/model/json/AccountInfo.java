@@ -5,17 +5,17 @@ import com.brahalla.PhotoAlbum.model.base.CommonModelBase;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class UserInfo extends CommonModelBase {
+public class AccountInfo extends CommonModelBase {
 
 	private static final long serialVersionUID = 6624726180748515507L;
 	private String username;
 	private String password;
 
-	public UserInfo() {
+	public AccountInfo() {
 		super();
 	}
 
-	public UserInfo(String username, String password) {
+	public AccountInfo(String username, String password) {
 		this.setUsername(username);
 		this.setPassword(password);
 	}
