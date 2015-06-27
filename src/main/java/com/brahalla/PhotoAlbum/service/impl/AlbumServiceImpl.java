@@ -1,9 +1,9 @@
 package com.brahalla.PhotoAlbum.service.impl;
 
-import com.brahalla.PhotoAlbum.dao.AlbumDao;
-import com.brahalla.PhotoAlbum.domain.Album;
-import com.brahalla.PhotoAlbum.factory.AlbumFactory;
-import com.brahalla.PhotoAlbum.model.AlbumInfo;
+import com.brahalla.PhotoAlbum.dao.AlbumRepository;
+import com.brahalla.PhotoAlbum.domain.entity.Album;
+import com.brahalla.PhotoAlbum.domain.factory.AlbumFactory;
+import com.brahalla.PhotoAlbum.model.json.AlbumInfo;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.List;
@@ -17,37 +17,38 @@ import org.springframework.transaction.annotation.Transactional;
 public class AlbumServiceImpl implements AlbumService {
 
 	@Autowired
-	private AlbumDao albumDao;
+	private AlbumRepository albumRepository;
 
   @Override
 	@Transactional
   public Album createAlbum(AlbumInfo albumInfo) {
 		Album album = AlbumFactory.createAlbum(albumInfo);
-    return this.albumDao.createAlbum(album);
+    return this.albumRepository.save(album);
   }
 
   @Override
   public Album getAlbumById(Long id) {
-    return this.albumDao.getAlbumById(id);
+    return this.albumRepository.findOne(id);
   }
 
   @Override
   public List<Album> getAlbumList() {
-    return this.albumDao.getAlbumList();
+    return (List<Album>) this.albumRepository.findAll();
   }
 
 	@Override
 	@Transactional
 	public Album updateAlbum(Long id, AlbumInfo albumInfo) {
-		Album album = this.albumDao.getAlbumById(id);
+		Album album = this.albumRepository.findOne(id);
 		BeanUtils.copyProperties(albumInfo, album);
-		return this.albumDao.updateAlbum(album);
+		return this.albumRepository.save(album);
 	}
 
   @Override
 	@Transactional
   public Album deleteAlbum(Long id) {
-    return this.albumDao.deleteAlbum(id);
+    this.albumRepository.delete(id);
+		return new Album();
   }
 
 }

@@ -1,4 +1,4 @@
-package com.brahalla.PhotoAlbum.domain;
+package com.brahalla.PhotoAlbum.domain.base;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 

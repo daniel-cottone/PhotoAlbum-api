@@ -1,4 +1,4 @@
-package com.brahalla.PhotoAlbum.model;
+package com.brahalla.PhotoAlbum.model.base;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 

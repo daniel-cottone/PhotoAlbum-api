@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.controller.advice;
 
-import com.brahalla.PhotoAlbum.model.ErrorResponse;
+import com.brahalla.PhotoAlbum.model.error.ErrorResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
