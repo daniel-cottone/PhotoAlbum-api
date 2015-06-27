@@ -5,7 +5,6 @@ import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
 
 import java.util.Date;
 
-
 public class PhotoFactory {
 
   public static Photo createPhoto(PhotoInfo photoInfo) {
