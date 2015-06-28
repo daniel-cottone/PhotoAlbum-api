@@ -19,7 +19,7 @@ public class AuthenticateController {
 	AccountService accountService;
 
 	/* Attempt to authenticate with API
-	 * REQUEST: POST /api/accounts
+	 * REQUEST: POST /api/authenticate
 	 */
   @RequestMapping(method = RequestMethod.POST)
   public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) {
