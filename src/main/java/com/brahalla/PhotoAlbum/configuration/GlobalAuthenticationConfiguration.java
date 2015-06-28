@@ -17,8 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @Configuration
 public class GlobalAuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
-  @Autowired
-  AccountRepository accountRepository;
+
 
   @Override
   public void init(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
@@ -28,6 +27,9 @@ public class GlobalAuthenticationConfiguration extends GlobalAuthenticationConfi
   @Bean
   UserDetailsService userDetailsService() {
     return new UserDetailsService() {
+
+      @Autowired
+      AccountRepository accountRepository;
 
       @Override
       public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
