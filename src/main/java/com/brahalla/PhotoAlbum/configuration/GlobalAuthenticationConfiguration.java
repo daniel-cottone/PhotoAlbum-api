@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @Configuration
-@ComponentScan
+@ComponentScan("com.brahalla.PhotoAlbum.dao")
 public class GlobalAuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
   @Autowired
