@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = {"com.brahalla.PhotoAlbum.dao"})
 public class ApplicationConfiguration {
 
 	public static void main(String[] args) {
