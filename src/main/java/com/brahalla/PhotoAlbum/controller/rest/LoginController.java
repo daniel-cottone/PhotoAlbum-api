@@ -2,7 +2,7 @@ package com.brahalla.PhotoAlbum.controller.rest;
 
 import com.brahalla.PhotoAlbum.domain.entity.Account;
 import com.brahalla.PhotoAlbum.model.json.AccountInfo;
-import com.brahalla.PhotoAlbum.model.json.LoginResponse;
+import com.brahalla.PhotoAlbum.model.json.response.LoginResponse;
 import com.brahalla.PhotoAlbum.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
