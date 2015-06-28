@@ -1,5 +1,8 @@
 package com.brahalla.PhotoAlbum.configuration;
 
+import com.brahalla.PhotoAlbum.dao.AccountRepository;
+import com.brahalla.PhotoAlbum.domain.entity.Account;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +13,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 
 @Configuration
 public class GlobalAuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
