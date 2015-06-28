@@ -31,7 +31,7 @@ public class GlobalAuthenticationConfiguration extends GlobalAuthenticationConfi
 
       @Override
       public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountRepository.findByUsername(username);
+        Account account = this.accountRepository.findByUsername(username);
         if(account != null) {
           return new User(
             account.getUsername(),
