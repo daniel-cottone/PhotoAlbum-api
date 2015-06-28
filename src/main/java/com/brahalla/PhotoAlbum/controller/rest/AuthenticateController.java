@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("login")
-public class LoginController {
+@RequestMapping("authenticate")
+public class AuthenticateController {
 
 	@Autowired
 	AccountService accountService;
@@ -22,7 +22,7 @@ public class LoginController {
 	 * REQUEST: POST /api/accounts
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public LoginResponse loginRequest(@RequestBody AccountInfo accountInfo) {
+  public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) {
     return new LoginResponse("dis is token");
   }
 
