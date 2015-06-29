@@ -29,29 +29,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
       .userDetailsService(userDetailsService());
   }
 
-  /*@Autowired
-  public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-    authenticationManagerBuilder
-      .inMemoryAuthentication()
-      .withUser("user")
-        .password("password")
-        .roles("USER")
-      .and().withUser("admin")
-        .password("password")
-        .roles("ADMIN","USER");
-  }*/
-
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
       .authorizeRequests()
         .anyRequest().fullyAuthenticated()
       //.and().authorizeUrls()
-      /*.and().formLogin()
+      .and().formLogin()
         .loginPage("/login")
         .permitAll()
       .and().logout()
-        .permitAll()*/
+        .permitAll()
       .and().httpBasic()
       .and().csrf()
         .disable();
