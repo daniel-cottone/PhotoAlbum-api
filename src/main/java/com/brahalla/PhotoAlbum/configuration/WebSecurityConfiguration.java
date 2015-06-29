@@ -1,5 +1,6 @@
 package com.brahalla.PhotoAlbum.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,7 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .anyRequest().fullyAuthenticated()
       //.and().authorizeUrls()
       .and().formLogin()
-        .loginUrl("authenticate")
+        .loginPage("authenticate")
         .permitAll()
       .and().httpBasic()
       .and().csrf()
