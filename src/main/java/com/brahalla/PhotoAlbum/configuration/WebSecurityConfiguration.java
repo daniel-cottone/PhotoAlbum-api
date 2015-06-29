@@ -22,6 +22,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   AccountRepository accountRepository;
 
   @Autowired
+  public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+    authenticationManagerBuilder
+      .userDetailsService(userDetailsService());
+  }
+
+  /*@Autowired
   public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
     authenticationManagerBuilder
       .inMemoryAuthentication()
@@ -31,7 +37,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
       .and().withUser("admin")
         .password("password")
         .roles("ADMIN","USER");
-  }
+  }*/
 
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -47,6 +53,28 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
       .and().httpBasic()
       .and().csrf()
         .disable();
+  }
+
+  @Bean
+  UserDetailsService userDetailsService() {
+    return new UserDetailsService() {
+
+      /*@Override
+      public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Account account = accountRepository.findByUsername(username);
+        if(account != null) {
+          return new User(
+            account.getUsername(),
+            account.getPassword(),
+            true, true, true, true,
+            AuthorityUtils.createAuthorityList("USER")
+          );
+        } else {
+          throw new UsernameNotFoundException("could not find the user '" + username + "'");
+        }
+      }*/
+
+    };
   }
 
 }
