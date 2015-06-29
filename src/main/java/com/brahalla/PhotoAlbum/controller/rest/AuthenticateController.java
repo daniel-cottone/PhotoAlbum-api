@@ -6,6 +6,7 @@ import com.brahalla.PhotoAlbum.model.json.response.LoginResponse;
 import com.brahalla.PhotoAlbum.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,9 @@ public class AuthenticateController {
 
 	@Autowired
 	AccountService accountService;
+
+	@Autowired
+	UserDetailsService userDetailsService;
 
 	/* Attempt to authenticate with API
 	 * REQUEST: POST /api/authenticate
