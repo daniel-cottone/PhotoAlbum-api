@@ -30,10 +30,13 @@ public class AuthenticateController {
   @RequestMapping(method = RequestMethod.POST)
   public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) {
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(accountInfo.getUsername());
-		System.out.println(userDetails);
-		String credentials = accountInfo.getUsername() + ":" + accountInfo.getPassword();
-		byte[] token = Base64.encode(credentials.getBytes());
-    return new LoginResponse(new String(token));
+		if (userDetails.getPassword() == accountInfo.getPassword()) {
+			String credentials = accountInfo.getUsername() + ":" + accountInfo.getPassword();
+			byte[] token = Base64.encode(credentials.getBytes());
+	    return new LoginResponse(new String(token));
+		} else {
+			return new LoginResponse();
+		}
   }
 
 }
