@@ -25,6 +25,8 @@ To build the PostgreSQL database when the API runs, set the following option: `s
 This project is built using Spring Boot/Spring Actuator, which makes it very easy to get running. You can either run the application directly from maven: `mvn spring-boot:run`, or you can build the application package with `mvn clean package` and then run the jar directly: `java -jar target/PhotoAlbum-1.0-SNAPSHOT.jar`.
 
 ##Usage
+The default username/password for this application is `user:user`. To access any of the endpoints you will be prompted for authorization.
+
 The relevant endpoints for this application are `/api/photos` and `/api/albums`. Both endpoints have the basic CRUD actions. For example, to view all photos, you can navigate to:
 
 ```
