@@ -30,7 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .anyRequest().fullyAuthenticated()
       //.and().authorizeUrls()
       .and().formLogin()
-        .loginPage("authenticate")
+        .loginPage("/login")
         .permitAll()
       .and().httpBasic()
       .and().csrf()
