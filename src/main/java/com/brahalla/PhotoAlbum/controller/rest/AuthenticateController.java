@@ -25,7 +25,7 @@ public class AuthenticateController {
   @RequestMapping(method = RequestMethod.POST)
   public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) {
 		String credentials = accountInfo.getUsername() + ":" + accountInfo.getPassword();
-		byte[] token = Base64.encode(credentials);
+		byte[] token = Base64.encode(credentials.getBytes());
     return new LoginResponse(new String(token));
   }
 
