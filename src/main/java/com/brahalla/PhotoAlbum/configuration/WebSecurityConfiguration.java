@@ -1,5 +1,8 @@
 package com.brahalla.PhotoAlbum.configuration;
 
+import com.brahalla.PhotoAlbum.dao.AccountRepository;
+import com.brahalla.PhotoAlbum.domain.entity.Account;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,6 +17,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+  @Autowired
+  UserDetailsService userDetailsService;
 
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
