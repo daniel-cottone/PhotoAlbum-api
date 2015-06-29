@@ -24,6 +24,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   AccountRepository accountRepository;
 
   @Autowired
+  TokenAuthenticationService tokenAuthenticationService;
+
+  @Autowired
   public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
     authenticationManagerBuilder
       .userDetailsService(userDetailsService());
@@ -33,13 +36,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
       .authorizeRequests()
+        .antMatchers("/authenticate/**").permitAll()
         .anyRequest().fullyAuthenticated()
-      //.and().authorizeUrls()
-      .and().formLogin()
+      /*.and().formLogin()
         .loginPage("/login")
         .permitAll()
       .and().logout()
-        .permitAll()
+        .permitAll()*/
       .and().httpBasic()
       .and().csrf()
         .disable();
@@ -65,6 +68,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
       }
 
     };
+  }
+
+  @Bean
+  public TokenAuthenticationService tokenAuthenticationService() {
+    return tokenAuthenticationService;
   }
 
 }
