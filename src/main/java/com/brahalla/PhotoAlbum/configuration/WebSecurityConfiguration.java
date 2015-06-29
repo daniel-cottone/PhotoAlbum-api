@@ -24,8 +24,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Autowired
   AccountRepository accountRepository;
 
-  @Autowired
-  TokenAuthenticationService tokenAuthenticationService;
+  /*@Autowired
+  TokenAuthenticationService tokenAuthenticationService;*/
 
   @Autowired
   public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
@@ -71,9 +71,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     };
   }
 
-  @Bean
+  /*@Bean
   public TokenAuthenticationService tokenAuthenticationService() {
     return tokenAuthenticationService;
-  }
+  }*/
 
 }
