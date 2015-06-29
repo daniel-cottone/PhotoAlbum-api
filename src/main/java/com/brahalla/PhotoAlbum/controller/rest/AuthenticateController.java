@@ -6,6 +6,7 @@ import com.brahalla.PhotoAlbum.model.json.response.LoginResponse;
 import com.brahalla.PhotoAlbum.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,8 @@ public class AuthenticateController {
 	 */
   @RequestMapping(method = RequestMethod.POST)
   public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) {
+		User user = this.userDetailsService.loadUserByUsername(accountInfo.getUsername());
+		System.out.println(user);
 		String credentials = accountInfo.getUsername() + ":" + accountInfo.getPassword();
 		byte[] token = Base64.encode(credentials.getBytes());
     return new LoginResponse(new String(token));
