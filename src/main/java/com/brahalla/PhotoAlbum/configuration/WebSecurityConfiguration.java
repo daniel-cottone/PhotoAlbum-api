@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -37,13 +37,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
       .authorizeRequests()
-        .antMatchers("/authenticate/**").permitAll()
+        //.antMatchers("/authenticate/**").permitAll()
         .anyRequest().fullyAuthenticated()
-      /*.and().formLogin()
-        .loginPage("/login")
-        .permitAll()
-      .and().logout()
-        .permitAll()*/
       .and().httpBasic()
       .and().csrf()
         .disable();
