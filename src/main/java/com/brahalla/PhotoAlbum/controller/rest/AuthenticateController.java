@@ -6,7 +6,7 @@ import com.brahalla.PhotoAlbum.model.json.response.LoginResponse;
 import com.brahalla.PhotoAlbum.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.codec.Base64;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
