@@ -6,8 +6,11 @@ import com.brahalla.PhotoAlbum.model.json.response.LoginResponse;
 import com.brahalla.PhotoAlbum.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +25,20 @@ public class AuthenticateController {
 	AccountService accountService;
 
 	@Autowired
-	UserDetailsService userDetailsService;
+	AuthenticationManager authenticationManager;
 
 	/* Attempt to authenticate with API
 	 * REQUEST: POST /api/authenticate
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) {
-		UserDetails userDetails = this.userDetailsService.loadUserByUsername(accountInfo.getUsername());
-		if (userDetails.getPassword() == accountInfo.getPassword()) {
+  public LoginResponse authenticationRequest(@RequestBody AccountInfo accountInfo) throws AuthenticationException {
+		Authentication authentication = this.authenticationManager.authenticate(
+			new UsernamePasswordAuthenticationToken(
+				accountInfo.getUsername(),
+				accountInfo.getPassword()
+			));
+		if (authentication.isAuthenticated()) {
+			SecurityContextHolder.getContext().setAuthentication(authentication);
 			String credentials = accountInfo.getUsername() + ":" + accountInfo.getPassword();
 			byte[] token = Base64.encode(credentials.getBytes());
 	    return new LoginResponse(new String(token));
