@@ -1,74 +1,25 @@
 package com.brahalla.PhotoAlbum.configuration;
 
-import com.brahalla.PhotoAlbum.dao.AccountRepository;
-import com.brahalla.PhotoAlbum.domain.entity.Account;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  @Autowired
-  AccountRepository accountRepository;
-
-  /*@Autowired
-  TokenAuthenticationService tokenAuthenticationService;*/
-
-  @Autowired
-  public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-    authenticationManagerBuilder
-      .userDetailsService(userDetailsService());
-  }
-
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
+      .csrf()
+        .disable()
+      .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
       .authorizeRequests()
-        .antMatchers("/authenticate/**").permitAll()
-        .anyRequest().fullyAuthenticated()
-      .and().httpBasic()
-      .and().csrf()
-        .disable();
+        .anyRequest().permitAll();
   }
-
-  @Bean
-  public UserDetailsService userDetailsService() {
-    return new UserDetailsService() {
-
-      @Override
-      public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountRepository.findByUsername(username);
-        if(account != null) {
-          return new User(
-            account.getUsername(),
-            account.getPassword(),
-            true, true, true, true,
-            AuthorityUtils.createAuthorityList("USER")
-          );
-        } else {
-          throw new UsernameNotFoundException("could not find the user '" + username + "'");
-        }
-      }
-
-    };
-  }
-
-  /*@Bean
-  public TokenAuthenticationService tokenAuthenticationService() {
-    return tokenAuthenticationService;
-  }*/
 
 }

@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.model.json;
 
-import com.brahalla.PhotoAlbum.model.base.CommonModelBase;
+import com.brahalla.PhotoAlbum.model.base.ModelBase;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class PhotoInfo extends CommonModelBase {
+public class PhotoInfo extends ModelBase {
 
 	private static final long serialVersionUID = 2817453290727069227L;
 	private String title;
