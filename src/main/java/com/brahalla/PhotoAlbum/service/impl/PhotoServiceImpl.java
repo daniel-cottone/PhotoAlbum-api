@@ -22,7 +22,7 @@ public class PhotoServiceImpl implements PhotoService {
   @Override
 	@Transactional
   public Photo createPhoto(PhotoRequest photoRequest) {
-		Photo photo = PhotoFactory.createPhoto(photoRequest);
+		Photo photo = PhotoFactory.create(photoRequest);
 		return this.photoRepository.save(photo);
   }
 

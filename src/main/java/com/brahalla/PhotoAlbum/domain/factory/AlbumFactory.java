@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class AlbumFactory {
 
-  public static Album createAlbum(AlbumRequest albumRequest) {
+  public static Album create(AlbumRequest albumRequest) {
     return new Album(
       albumRequest.getTitle(),
       new Date(),

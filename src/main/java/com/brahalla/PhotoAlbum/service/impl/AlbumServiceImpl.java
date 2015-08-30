@@ -22,7 +22,7 @@ public class AlbumServiceImpl implements AlbumService {
   @Override
 	@Transactional
   public Album createAlbum(AlbumRequest albumRequest) {
-		Album album = AlbumFactory.createAlbum(albumRequest);
+		Album album = AlbumFactory.create(albumRequest);
     return this.albumRepository.save(album);
   }
 

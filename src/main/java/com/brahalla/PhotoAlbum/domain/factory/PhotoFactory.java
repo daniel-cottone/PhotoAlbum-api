@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class PhotoFactory {
 
-  public static Photo createPhoto(PhotoRequest photoRequest) {
+  public static Photo create(PhotoRequest photoRequest) {
     return new Photo(
       photoRequest.getTitle(),
       new Date(),
