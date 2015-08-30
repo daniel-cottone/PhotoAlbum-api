@@ -3,7 +3,7 @@ package com.brahalla.PhotoAlbum.service.impl;
 import com.brahalla.PhotoAlbum.dao.AlbumRepository;
 import com.brahalla.PhotoAlbum.domain.entity.Album;
 import com.brahalla.PhotoAlbum.domain.factory.AlbumFactory;
-import com.brahalla.PhotoAlbum.model.json.AlbumInfo;
+import com.brahalla.PhotoAlbum.model.json.request.AlbumRequest;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.List;
@@ -21,8 +21,8 @@ public class AlbumServiceImpl implements AlbumService {
 
   @Override
 	@Transactional
-  public Album createAlbum(AlbumInfo albumInfo) {
-		Album album = AlbumFactory.createAlbum(albumInfo);
+  public Album createAlbum(AlbumRequest albumRequest) {
+		Album album = AlbumFactory.createAlbum(albumRequest);
     return this.albumRepository.save(album);
   }
 
@@ -38,9 +38,9 @@ public class AlbumServiceImpl implements AlbumService {
 
 	@Override
 	@Transactional
-	public Album updateAlbum(Long id, AlbumInfo albumInfo) {
+	public Album updateAlbum(Long id, AlbumRequest albumRequest) {
 		Album album = this.albumRepository.findOne(id);
-		BeanUtils.copyProperties(albumInfo, album);
+		BeanUtils.copyProperties(albumRequest, album);
 		return this.albumRepository.save(album);
 	}
 

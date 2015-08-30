@@ -1,7 +1,7 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
 import com.brahalla.PhotoAlbum.domain.entity.Album;
-import com.brahalla.PhotoAlbum.model.json.AlbumInfo;
+import com.brahalla.PhotoAlbum.model.json.request.AlbumRequest;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
 import java.util.List;
@@ -27,8 +27,8 @@ public class AlbumController {
 	 * POST /api/albums
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Album createAlbum(@Valid @RequestBody AlbumInfo albumInfo) {
-    return this.albumService.createAlbum(albumInfo);
+  public Album createAlbum(@Valid @RequestBody AlbumRequest albumRequest) {
+    return this.albumService.createAlbum(albumRequest);
   }
 
 	/* READ - read an album
@@ -51,8 +51,8 @@ public class AlbumController {
 	 * REQUEST: PUT /api/albums/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Album updateAlbum(@PathVariable("id") Long id, @Valid @RequestBody AlbumInfo albumInfo) {
-    return this.albumService.updateAlbum(id, albumInfo);
+  public Album updateAlbum(@PathVariable("id") Long id, @Valid @RequestBody AlbumRequest albumRequest) {
+    return this.albumService.updateAlbum(id, albumRequest);
   }
 
 	/* DELETE - delete an album

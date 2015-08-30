@@ -1,7 +1,7 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
 import com.brahalla.PhotoAlbum.domain.entity.Photo;
-import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
+import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;
@@ -27,8 +27,8 @@ public class PhotoController {
 	 * REQUEST: POST /api/photos
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Photo createPhoto(@Valid @RequestBody PhotoInfo photoInfo) {
-    return this.photoService.createPhoto(photoInfo);
+  public Photo createPhoto(@Valid @RequestBody PhotoRequest photoRequest) {
+    return this.photoService.createPhoto(photoRequest);
   }
 
 	/* READ - read a photo
@@ -55,8 +55,8 @@ public class PhotoController {
 	 * REQUEST: PUT /api/photos/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Photo updatePhoto(@PathVariable("id") Long id, @Valid @RequestBody PhotoInfo photoInfo) {
-    return this.photoService.updatePhoto(id, photoInfo);
+  public Photo updatePhoto(@PathVariable("id") Long id, @Valid @RequestBody PhotoRequest photoRequest) {
+    return this.photoService.updatePhoto(id, photoRequest);
   }
 
 	/* DELETE - delete a photo

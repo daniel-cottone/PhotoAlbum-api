@@ -3,7 +3,7 @@ package com.brahalla.PhotoAlbum.service.impl;
 import com.brahalla.PhotoAlbum.dao.PhotoRepository;
 import com.brahalla.PhotoAlbum.domain.entity.Photo;
 import com.brahalla.PhotoAlbum.domain.factory.PhotoFactory;
-import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
+import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;
@@ -21,8 +21,8 @@ public class PhotoServiceImpl implements PhotoService {
 
   @Override
 	@Transactional
-  public Photo createPhoto(PhotoInfo photoInfo) {
-		Photo photo = PhotoFactory.createPhoto(photoInfo);
+  public Photo createPhoto(PhotoRequest photoRequest) {
+		Photo photo = PhotoFactory.createPhoto(photoRequest);
 		return this.photoRepository.save(photo);
   }
 
@@ -43,9 +43,9 @@ public class PhotoServiceImpl implements PhotoService {
 
 	@Override
 	@Transactional
-	public Photo updatePhoto(Long id, PhotoInfo photoInfo) {
+	public Photo updatePhoto(Long id, PhotoRequest photoRequest) {
 		Photo photo = this.photoRepository.findOne(id);
-		BeanUtils.copyProperties(photoInfo, photo);
+		BeanUtils.copyProperties(photoRequest, photo);
 		return this.photoRepository.save(photo);
 	}
 

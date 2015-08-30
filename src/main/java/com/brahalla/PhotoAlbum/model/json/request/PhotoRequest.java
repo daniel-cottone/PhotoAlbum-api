@@ -1,4 +1,4 @@
-package com.brahalla.PhotoAlbum.model.json;
+package com.brahalla.PhotoAlbum.model.json.request;
 
 import com.brahalla.PhotoAlbum.model.base.ModelBase;
 
@@ -9,18 +9,18 @@ import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class PhotoInfo extends ModelBase {
+public class PhotoRequest extends ModelBase {
 
 	private static final long serialVersionUID = 2817453290727069227L;
 	private String title;
 	private String filePath;
 	private Long albumId;
 
-	public PhotoInfo() {
+	public PhotoRequest() {
 		super();
 	}
 
-	public PhotoInfo(String title, String filePath, Long albumId) {
+	public PhotoRequest(String title, String filePath, Long albumId) {
 		this.setTitle(title);
 		this.setFilePath(filePath);
 		this.setAlbumId(albumId);
