@@ -16,8 +16,7 @@
     <java.version>1.7</java.version>
     <spring-boot.version>1.2.3.RELEASE</spring-boot.version>
     <spring-framework.version>4.1.6.RELEASE</spring-framework.version>
-    <hibernate.version>4.3.10.Final</hibernate.version>
-    <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+    <h2.version>1.4.188</h2.version>
     <jackson.version>2.5.3</jackson.version>
     <apache-commons.version>3.0</apache-commons.version>
     <junit.version>4.12</junit.version>
@@ -42,6 +41,10 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
@@ -50,19 +53,9 @@
       <version>${spring-framework.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>${postgresql.version}</version>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
     </dependency>
     <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -88,6 +81,10 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
       </plugin>
     </plugins>
   </build>

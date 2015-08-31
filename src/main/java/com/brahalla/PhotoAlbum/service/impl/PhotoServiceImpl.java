@@ -3,9 +3,12 @@ package com.brahalla.PhotoAlbum.service.impl;
 import com.brahalla.PhotoAlbum.dao.PhotoRepository;
 import com.brahalla.PhotoAlbum.domain.entity.Photo;
 import com.brahalla.PhotoAlbum.domain.factory.PhotoFactory;
-import com.brahalla.PhotoAlbum.model.json.PhotoInfo;
+import com.brahalla.PhotoAlbum.model.factory.PhotoResponseFactory;
+import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
+import com.brahalla.PhotoAlbum.model.json.response.PhotoResponse;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -21,39 +24,60 @@ public class PhotoServiceImpl implements PhotoService {
 
   @Override
 	@Transactional
-  public Photo createPhoto(PhotoInfo photoInfo) {
-		Photo photo = PhotoFactory.createPhoto(photoInfo);
-		return this.photoRepository.save(photo);
+  public PhotoResponse createPhoto(PhotoRequest photoRequest) {
+		Photo photo = PhotoFactory.create(photoRequest);
+		photo = this.photoRepository.save(photo);
+		PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+		return photoResponse;
   }
 
   @Override
-  public Photo getPhotoById(Long id) {
-    return this.photoRepository.findOne(id);
+  public PhotoResponse getPhotoById(Long id) {
+    Photo photo = this.photoRepository.findOne(id);
+		PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+		return photoResponse;
   }
 
   @Override
-  public List<Photo> getPhotoList() {
-    return (List<Photo>) this.photoRepository.findAll();
+  public List<PhotoResponse> getPhotoList() {
+    List<Photo> photoList = (List<Photo>) this.photoRepository.findAll();
+		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
+
+		for (Photo photo : photoList) {
+			PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+			photoResponseList.add(photoResponse);
+		}
+
+		return photoResponseList;
   }
 
 	@Override
-	public List<Photo> getPhotoListByAlbumId(Long albumId) {
-		return this.photoRepository.findByAlbumId(albumId);
+	public List<PhotoResponse> getPhotoListByAlbumId(Long albumId) {
+		List<Photo> photoList = (List<Photo>) this.photoRepository.findByAlbumId(albumId);
+		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
+
+		for (Photo photo : photoList) {
+			PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+			photoResponseList.add(photoResponse);
+		}
+
+		return photoResponseList;
 	}
 
 	@Override
 	@Transactional
-	public Photo updatePhoto(Long id, PhotoInfo photoInfo) {
+	public PhotoResponse updatePhoto(Long id, PhotoRequest photoRequest) {
 		Photo photo = this.photoRepository.findOne(id);
-		BeanUtils.copyProperties(photoInfo, photo);
-		return this.photoRepository.save(photo);
+		BeanUtils.copyProperties(photoRequest, photo);
+		photo = this.photoRepository.save(photo);
+		PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+		return photoResponse;
 	}
 
   @Override
 	@Transactional
-  public Photo deletePhoto(Long id) {
+  public void deletePhoto(Long id) {
     this.photoRepository.delete(id);
-		return new Photo();
   }
 
 }

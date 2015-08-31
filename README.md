@@ -1,7 +1,7 @@
 #PhotoAlbum
 
 ##About
-This is an example RESTful API written in Java and Spring Framework. This project is intended to be a demonstration of how a REST API can be structured and designed with Spring Boot/Actuator and Spring Data.
+This is an example RESTful API written in Java and Spring Framework. This project is intended to be a demonstration of how a REST API can be structured and designed using Spring Boot/Actuator, Spring Data, Spring Security, and Hibernate.
 
 ##Installation
 To run this application you will first need to install a few packages: jdk 1.7, maven, and postgresql (you can also install these packages with yum, brew, etc.)
@@ -23,6 +23,8 @@ spring.datasource.password=photoalbum
 This project is built using Spring Boot/Spring Actuator, which makes it very easy to get running. You can either run the application directly from maven: `mvn spring-boot:run`, or you can build the application package with `mvn clean package` and then run the jar directly: `java -jar target/PhotoAlbum-1.0-SNAPSHOT.jar`.
 
 ##Usage
+The default username/password for this application is `user:user`. To access any of the endpoints you will be prompted for authorization.
+
 The relevant endpoints for this application are `/api/photos` and `/api/albums`. Both endpoints have the basic CRUD actions. For example, to view all photos, you can navigate to:
 
 ```

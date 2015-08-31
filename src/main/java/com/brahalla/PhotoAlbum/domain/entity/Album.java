@@ -1,6 +1,6 @@
 package com.brahalla.PhotoAlbum.domain.entity;
 
-import com.brahalla.PhotoAlbum.domain.base.CommonDomainBase;
+import com.brahalla.PhotoAlbum.domain.base.DomainBase;
 
 import java.util.Date;
 
@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "albums")
-public class Album extends CommonDomainBase {
+public class Album extends DomainBase {
 
 	private static final long serialVersionUID = -3236876036458097243L;
 	private Long id;
@@ -35,9 +35,9 @@ public class Album extends CommonDomainBase {
 	}
 
 	@Id
-	@Column(name = "album_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_album_id_seq")
-	@SequenceGenerator(name = "albums_album_id_seq", sequenceName = "albums_album_id_seq", allocationSize = 1)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_seq")
+	@SequenceGenerator(name = "albums_seq", sequenceName = "albums_seq", allocationSize = 1)
 	public Long getId() {
 		return this.id;
 	}
@@ -56,7 +56,7 @@ public class Album extends CommonDomainBase {
 	}
 
 	@Column(name = "created_date")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getCreatedDate() {
 		return this.createdDate;
 	}

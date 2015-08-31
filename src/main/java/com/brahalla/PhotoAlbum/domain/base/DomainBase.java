@@ -1,10 +1,10 @@
-package com.brahalla.PhotoAlbum.model.base;
+package com.brahalla.PhotoAlbum.domain.base;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.io.Serializable;
 
-public class CommonModelBase implements Serializable {
+public class DomainBase implements Serializable {
 
   @Override
   public String toString() {
