@@ -12,10 +12,10 @@ public class AlbumResponseFactory {
 
   public static AlbumResponse create(Album album) {
     return new AlbumResponse(
-      album.getId(),
+      album.getId().toString(),
       album.getTitle(),
       new SimpleDateFormat(dateFormat).format(album.getCreatedDate()),
-      album.getCoverPhotoId()
+      album.getCoverPhotoId().toString()
     );
   }
 
