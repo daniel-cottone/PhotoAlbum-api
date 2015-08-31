@@ -35,7 +35,7 @@ public class Album extends DomainBase {
 	}
 
 	@Id
-	@Column(name = "album_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "albums_seq")
 	@SequenceGenerator(name = "albums_seq", sequenceName = "albums_seq", allocationSize = 1)
 	public Long getId() {

@@ -37,7 +37,7 @@ public class Photo extends DomainBase {
 	}
 
 	@Id
-	@Column(name = "photo_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "photos_seq")
 	@SequenceGenerator(name = "photos_seq", sequenceName = "photos_seq", allocationSize = 1)
 	public Long getId() {
