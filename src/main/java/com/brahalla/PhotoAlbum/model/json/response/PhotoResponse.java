@@ -4,7 +4,7 @@ import com.brahalla.PhotoAlbum.model.base.ModelBase;
 
 public class PhotoResponse extends ModelBase {
 
-	//private static final String serialVersionUID = ;
+	private static final String serialVersionUID = 4915560567736950946L;
 	private String id;
 	private String title;
 	private String createdDate;

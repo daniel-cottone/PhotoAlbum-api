@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("photos")
+@RequestMapping("${photoalbum.route.photos}")
 public class PhotoController {
 
 	@Autowired
