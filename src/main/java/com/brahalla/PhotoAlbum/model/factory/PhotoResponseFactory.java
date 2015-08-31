@@ -6,18 +6,49 @@ import com.brahalla.PhotoAlbum.model.json.response.PhotoResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PhotoResponseFactory {
+import org.apache.commons.lang3.ObjectUtils;
 
-  private static final String dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.stereotype.Component;
 
-  public static PhotoResponse create(Photo photo) {
+@Component
+public class PhotoResponseFactory implements FactoryBean<PhotoResponse> {
+
+  @Value("${photoalbum.date.format}")
+  private String dateFormat;
+
+  public PhotoResponse create(Photo photo) {
     return new PhotoResponse(
       photo.getId().toString(),
       photo.getTitle(),
-      new SimpleDateFormat(dateFormat).format(photo.getCreatedDate()),
+      new SimpleDateFormat(this.dateFormat).format(photo.getCreatedDate()),
       photo.getFilePath(),
-      photo.getAlbumId().toString()
+      ObjectUtils.toString(photo.getAlbumId())
     );
+  }
+
+  public String getDateFormat() {
+    return this.dateFormat;
+  }
+
+  public void setDateFormat(String dateFormat) {
+    this.dateFormat = dateFormat;
+  }
+
+  @Override
+  public PhotoResponse getObject() {
+    return new PhotoResponse();
+  }
+
+  @Override
+  public Class<PhotoResponse> getObjectType() {
+    return PhotoResponse.class;
+  }
+
+  @Override
+  public boolean isSingleton() {
+    return false;
   }
 
 }

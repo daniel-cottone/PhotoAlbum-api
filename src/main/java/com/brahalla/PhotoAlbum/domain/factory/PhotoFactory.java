@@ -5,15 +5,34 @@ import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
 
 import java.util.Date;
 
-public class PhotoFactory {
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.stereotype.Component;
 
-  public static Photo create(PhotoRequest photoRequest) {
+@Component
+public class PhotoFactory implements FactoryBean<Photo> {
+
+  public Photo create(PhotoRequest photoRequest) {
     return new Photo(
       photoRequest.getTitle(),
       new Date(),
       photoRequest.getFilePath(),
       photoRequest.getAlbumId()
     );
+  }
+
+  @Override
+  public Photo getObject() {
+    return new Photo();
+  }
+
+  @Override
+  public Class<Photo> getObjectType() {
+    return Photo.class;
+  }
+
+  @Override
+  public boolean isSingleton() {
+    return false;
   }
 
 }

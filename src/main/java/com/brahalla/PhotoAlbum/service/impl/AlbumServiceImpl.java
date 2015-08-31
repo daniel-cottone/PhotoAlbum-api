@@ -20,22 +20,26 @@ import org.springframework.transaction.annotation.Transactional;
 public class AlbumServiceImpl implements AlbumService {
 
 	@Autowired
+	private AlbumFactory albumFactory;
+
+	@Autowired
+	private AlbumResponseFactory albumResponseFactory;
+
+	@Autowired
 	private AlbumRepository albumRepository;
 
   @Override
 	@Transactional
   public AlbumResponse createAlbum(AlbumRequest albumRequest) {
-		Album album = AlbumFactory.create(albumRequest);
+		Album album = this.albumFactory.create(albumRequest);
     album = this.albumRepository.save(album);
-		AlbumResponse albumResponse = AlbumResponseFactory.create(album);
-		return albumResponse;
+		return this.albumResponseFactory.create(album);
   }
 
   @Override
   public AlbumResponse getAlbumById(Long id) {
     Album album = this.albumRepository.findOne(id);
-		AlbumResponse albumResponse = AlbumResponseFactory.create(album);
-		return albumResponse;
+		return this.albumResponseFactory.create(album);
   }
 
   @Override
@@ -44,7 +48,7 @@ public class AlbumServiceImpl implements AlbumService {
 		List<AlbumResponse> albumResponseList = new LinkedList<AlbumResponse>();
 
 		for (Album album : albumList) {
-			AlbumResponse albumResponse = AlbumResponseFactory.create(album);
+			AlbumResponse albumResponse = this.albumResponseFactory.create(album);
 			albumResponseList.add(albumResponse);
 		}
 
@@ -57,8 +61,7 @@ public class AlbumServiceImpl implements AlbumService {
 		Album album = this.albumRepository.findOne(id);
 		BeanUtils.copyProperties(albumRequest, album);
 		album = this.albumRepository.save(album);
-		AlbumResponse albumResponse = AlbumResponseFactory.create(album);
-		return albumResponse;
+		return this.albumResponseFactory.create(album);
 	}
 
   @Override
