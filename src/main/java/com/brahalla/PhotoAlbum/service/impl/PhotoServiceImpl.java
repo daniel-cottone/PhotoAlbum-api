@@ -20,22 +20,26 @@ import org.springframework.transaction.annotation.Transactional;
 public class PhotoServiceImpl implements PhotoService {
 
 	@Autowired
+	private PhotoFactory photoFactory;
+
+	@Autowired
+	private PhotoResponseFactory photoResponseFactory;
+
+	@Autowired
 	private PhotoRepository photoRepository;
 
   @Override
 	@Transactional
   public PhotoResponse createPhoto(PhotoRequest photoRequest) {
-		Photo photo = PhotoFactory.create(photoRequest);
+		Photo photo = this.photoFactory.create(photoRequest);
 		photo = this.photoRepository.save(photo);
-		PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
-		return photoResponse;
+		return this.photoResponseFactory.create(photo);
   }
 
   @Override
   public PhotoResponse getPhotoById(Long id) {
     Photo photo = this.photoRepository.findOne(id);
-		PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
-		return photoResponse;
+		return this.photoResponseFactory.create(photo);
   }
 
   @Override
@@ -44,7 +48,7 @@ public class PhotoServiceImpl implements PhotoService {
 		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
 
 		for (Photo photo : photoList) {
-			PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+			PhotoResponse photoResponse = this.photoResponseFactory.create(photo);
 			photoResponseList.add(photoResponse);
 		}
 
@@ -57,7 +61,7 @@ public class PhotoServiceImpl implements PhotoService {
 		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
 
 		for (Photo photo : photoList) {
-			PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
+			PhotoResponse photoResponse = this.photoResponseFactory.create(photo);
 			photoResponseList.add(photoResponse);
 		}
 
@@ -70,8 +74,7 @@ public class PhotoServiceImpl implements PhotoService {
 		Photo photo = this.photoRepository.findOne(id);
 		BeanUtils.copyProperties(photoRequest, photo);
 		photo = this.photoRepository.save(photo);
-		PhotoResponse photoResponse = PhotoResponseFactory.create(photo);
-		return photoResponse;
+		return this.photoResponseFactory.create(photo);
 	}
 
   @Override
