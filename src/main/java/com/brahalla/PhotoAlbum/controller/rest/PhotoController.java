@@ -1,7 +1,7 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
-import com.brahalla.PhotoAlbum.domain.entity.Photo;
 import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
+import com.brahalla.PhotoAlbum.model.json.response.PhotoResponse;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,27 +28,27 @@ public class PhotoController {
 	 * REQUEST: POST /api/photos
 	 */
   @RequestMapping(method = RequestMethod.POST)
-  public Photo createPhoto(@Valid @RequestBody PhotoRequest photoRequest) {
-    return this.photoService.createPhoto(photoRequest);
+  public ResponseEntity<?> createPhoto(@Valid @RequestBody PhotoRequest photoRequest) {
+    return ResponseEntity.ok(this.photoService.createPhoto(photoRequest));
   }
 
 	/* READ - read a photo
 	 * REQUEST: GET /api/photos/{id}
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
-  public Photo getPhotoById(@PathVariable("id") Long id) {
-    return this.photoService.getPhotoById(id);
+  public ResponseEntity<?> getPhotoById(@PathVariable("id") Long id) {
+    return ResponseEntity.ok(this.photoService.getPhotoById(id));
   }
 
 	/* READ - read a list of photos matching request params
 	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Photo> getPhotoList(@RequestParam(value = "albumId", required = false) Long albumId) {
+	public ResponseEntity<?> getPhotoList(@RequestParam(value = "albumId", required = false) Long albumId) {
 		if (albumId != null) {
-			return this.photoService.getPhotoListByAlbumId(albumId);
+			return ResponseEntity.ok(this.photoService.getPhotoListByAlbumId(albumId));
 		} else {
-			return this.photoService.getPhotoList();
+			return ResponseEntity.ok(this.photoService.getPhotoList());
 		}
 	}
 
@@ -55,16 +56,17 @@ public class PhotoController {
 	 * REQUEST: PUT /api/photos/{id}
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-  public Photo updatePhoto(@PathVariable("id") Long id, @Valid @RequestBody PhotoRequest photoRequest) {
-    return this.photoService.updatePhoto(id, photoRequest);
+  public ResponseEntity<?> updatePhoto(@PathVariable("id") Long id, @Valid @RequestBody PhotoRequest photoRequest) {
+    return ResponseEntity.ok(this.photoService.updatePhoto(id, photoRequest));
   }
 
 	/* DELETE - delete a photo
 	 * REQUEST: DELETE /api/photos/{id}
 	 */
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-  public Photo deletePhoto(@PathVariable("id") Long id) {
-    return this.photoService.deletePhoto(id);
+  public ResponseEntity<?> deletePhoto(@PathVariable("id") Long id) {
+    this.photoService.deletePhoto(id);
+		return ResponseEntity.ok(null);
   }
 
 }
