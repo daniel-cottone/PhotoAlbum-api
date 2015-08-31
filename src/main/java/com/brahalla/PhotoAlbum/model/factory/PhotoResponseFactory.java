@@ -12,11 +12,11 @@ public class PhotoResponseFactory {
 
   public static PhotoResponse create(Photo photo) {
     return new PhotoResponse(
-      photo.getId(),
+      photo.getId().toString(),
       photo.getTitle(),
       new SimpleDateFormat(dateFormat).format(photo.getCreatedDate()),
       photo.getFilePath(),
-      photo.getAlbumId()
+      photo.getAlbumId().toString()
     );
   }
 

@@ -4,28 +4,28 @@ import com.brahalla.PhotoAlbum.model.base.ModelBase;
 
 public class AlbumResponse extends ModelBase {
 
-	//private static final long serialVersionUID = ;
-	private Long id;
+	//private static final String serialVersionUID = ;
+	private String id;
 	private String title;
 	private String createdDate;
-	private Long coverPhotoId;
+	private String coverPhotoId;
 
 	public AlbumResponse() {
 		super();
 	}
 
-	public AlbumResponse(Long id, String title, String createdDate, Long coverPhotoId) {
+	public AlbumResponse(String id, String title, String createdDate, String coverPhotoId) {
 		this.setId(id);
 		this.setTitle(title);
 		this.setCreatedDate(createdDate);
 		this.setCoverPhotoId(coverPhotoId);
 	}
 
-	public Long getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -45,11 +45,11 @@ public class AlbumResponse extends ModelBase {
 		this.createdDate = createdDate;
 	}
 
-	public Long getCoverPhotoId() {
+	public String getCoverPhotoId() {
 		return this.coverPhotoId;
 	}
 
-	public void setCoverPhotoId(Long coverPhotoId) {
+	public void setCoverPhotoId(String coverPhotoId) {
 		this.coverPhotoId = coverPhotoId;
 	}
 
