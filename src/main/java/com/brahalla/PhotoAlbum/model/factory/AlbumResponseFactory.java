@@ -5,6 +5,8 @@ import com.brahalla.PhotoAlbum.model.json.response.AlbumResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.commons.lang3.ObjectUtils;
 
@@ -25,6 +27,12 @@ public class AlbumResponseFactory implements FactoryBean<AlbumResponse> {
       new SimpleDateFormat(this.dateFormat).format(album.getCreatedDate()),
       ObjectUtils.toString(album.getCoverPhotoId())
     );
+  }
+
+  public List<AlbumResponse> create(List<Album> albumList) {
+    List<AlbumResponse> albumResponseList = new LinkedList<AlbumResponse>();
+    albumList.forEach(a -> albumResponseList.add(this.create(a)));
+    return albumResponseList;
   }
 
   public String getDateFormat() {
