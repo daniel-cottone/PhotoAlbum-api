@@ -11,9 +11,7 @@ public interface PhotoService {
 
   public PhotoResponse getPhotoById(Long id);
 
-  public List<PhotoResponse> getPhotoList();
-
-  public List<PhotoResponse> getPhotoListByAlbumId(Long albumId);
+  public List<PhotoResponse> getPhotoList(String page, String count, String sortDirection, String sortBy, Long albumId);
 
   public PhotoResponse updatePhoto(Long id, PhotoRequest photoRequest);
 

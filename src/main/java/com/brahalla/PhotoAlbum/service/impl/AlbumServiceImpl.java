@@ -13,6 +13,9 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,9 +45,17 @@ public class AlbumServiceImpl implements AlbumService {
 		return this.albumResponseFactory.create(album);
   }
 
-  @Override
-  public List<AlbumResponse> getAlbumList() {
-    List<Album> albumList = (List<Album>) this.albumRepository.findAll();
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<AlbumResponse> getAlbumList(String page, String count, String sortDirection, String sortBy) {
+    Page result = this.albumRepository.findAll(
+			new PageRequest(
+				Integer.valueOf(page),
+				Integer.valueOf(count),
+				new Sort(Sort.Direction.fromStringOrNull(sortDirection), sortBy)
+			)
+		);
+		List<Album> albumList = result.getContent();
 		List<AlbumResponse> albumResponseList = new LinkedList<AlbumResponse>();
 
 		for (Album album : albumList) {

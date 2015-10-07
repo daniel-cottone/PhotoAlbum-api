@@ -44,8 +44,13 @@ public class AlbumController {
 	 * REQUEST: GET /api/albums
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> getAlbumList() {
-		return ResponseEntity.ok(this.albumService.getAlbumList());
+	public ResponseEntity<?> getAlbumList(
+		@RequestParam(value = "page", defaultValue = "${albums.param.page}", required = false) String page,
+		@RequestParam(value = "count", defaultValue = "${albums.param.count}", required = false) String count,
+		@RequestParam(value = "order", defaultValue = "${albums.param.order}", required = false) String sortDirection,
+		@RequestParam(value = "sort", defaultValue = "${albums.param.sort}", required = false) String sortBy) {
+
+			return ResponseEntity.ok(this.albumService.getAlbumList(page, count, sortDirection, sortBy));
 	}
 
 	/* UPDATE - update an album

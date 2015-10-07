@@ -44,12 +44,14 @@ public class PhotoController {
 	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> getPhotoList(@RequestParam(value = "albumId", required = false) Long albumId) {
-		if (albumId != null) {
-			return ResponseEntity.ok(this.photoService.getPhotoListByAlbumId(albumId));
-		} else {
-			return ResponseEntity.ok(this.photoService.getPhotoList());
-		}
+	public ResponseEntity<?> getPhotoList(
+		@RequestParam(value = "page", defaultValue = "${photos.param.page}", required = false) String page,
+		@RequestParam(value = "count", defaultValue = "${photos.param.count}", required = false) String count,
+		@RequestParam(value = "order", defaultValue = "${photos.param.order}", required = false) String sortDirection,
+		@RequestParam(value = "sort", defaultValue = "${photos.param.sort}", required = false) String sortBy,
+		@RequestParam(value = "albumId", required = false) Long albumId) {
+
+			return ResponseEntity.ok(this.photoService.getPhotoList(page, count, sortDirection, sortBy, albumId));
 	}
 
 	/* UPDATE - update a photo

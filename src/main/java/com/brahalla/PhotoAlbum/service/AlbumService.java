@@ -11,7 +11,7 @@ public interface AlbumService {
 
   public AlbumResponse getAlbumById(Long id);
 
-  public List<AlbumResponse> getAlbumList();
+  public List<AlbumResponse> getAlbumList(String page, String count, String sortDirection, String sortBy);
 
   public AlbumResponse updateAlbum(Long id, AlbumRequest albumRequest);
 

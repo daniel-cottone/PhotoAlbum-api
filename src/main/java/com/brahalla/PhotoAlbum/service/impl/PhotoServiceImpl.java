@@ -13,6 +13,9 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,8 +46,14 @@ public class PhotoServiceImpl implements PhotoService {
   }
 
   @Override
-  public List<PhotoResponse> getPhotoList() {
-    List<Photo> photoList = (List<Photo>) this.photoRepository.findAll();
+	@SuppressWarnings("unchecked")
+  public List<PhotoResponse> getPhotoList(String page, String count, String sortDirection, String sortBy, Long albumId) {
+		List<Photo> photoList = new LinkedList<Photo>();
+		if (albumId != null) {
+			photoList = (List<Photo>) this.photoRepository.findByAlbumId(albumId);
+		} else {
+			photoList = (List<Photo>) this.photoRepository.findAll();
+		}
 		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
 
 		for (Photo photo : photoList) {
@@ -54,19 +63,6 @@ public class PhotoServiceImpl implements PhotoService {
 
 		return photoResponseList;
   }
-
-	@Override
-	public List<PhotoResponse> getPhotoListByAlbumId(Long albumId) {
-		List<Photo> photoList = (List<Photo>) this.photoRepository.findByAlbumId(albumId);
-		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
-
-		for (Photo photo : photoList) {
-			PhotoResponse photoResponse = this.photoResponseFactory.create(photo);
-			photoResponseList.add(photoResponse);
-		}
-
-		return photoResponseList;
-	}
 
 	@Override
 	@Transactional
