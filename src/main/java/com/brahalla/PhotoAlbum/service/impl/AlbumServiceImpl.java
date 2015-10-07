@@ -56,14 +56,7 @@ public class AlbumServiceImpl implements AlbumService {
 			)
 		);
 		List<Album> albumList = result.getContent();
-		List<AlbumResponse> albumResponseList = new LinkedList<AlbumResponse>();
-
-		for (Album album : albumList) {
-			AlbumResponse albumResponse = this.albumResponseFactory.create(album);
-			albumResponseList.add(albumResponse);
-		}
-
-		return albumResponseList;
+		return this.albumResponseFactory.create(albumList);
   }
 
 	@Override

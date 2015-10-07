@@ -54,14 +54,7 @@ public class PhotoServiceImpl implements PhotoService {
 		} else {
 			photoList = (List<Photo>) this.photoRepository.findAll();
 		}
-		List<PhotoResponse> photoResponseList = new LinkedList<PhotoResponse>();
-
-		for (Photo photo : photoList) {
-			PhotoResponse photoResponse = this.photoResponseFactory.create(photo);
-			photoResponseList.add(photoResponse);
-		}
-
-		return photoResponseList;
+		return this.photoResponseFactory.create(photoList);
   }
 
 	@Override
