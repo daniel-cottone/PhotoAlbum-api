@@ -1,14 +1,14 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
 import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
-import com.brahalla.PhotoAlbum.model.json.response.PhotoResponse;
 import com.brahalla.PhotoAlbum.service.PhotoService;
-
-import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +29,7 @@ public class PhotoController {
 	 */
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<?> createPhoto(@Valid @RequestBody PhotoRequest photoRequest) {
-    return ResponseEntity.ok(this.photoService.createPhoto(photoRequest));
+    return new ResponseEntity<>(this.photoService.createPhoto(photoRequest), HttpStatus.CREATED);
   }
 
 	/* READ - read a photo
@@ -44,12 +44,10 @@ public class PhotoController {
 	 * REQUEST: GET /api/photos
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> getPhotoList(@RequestParam(value = "albumId", required = false) Long albumId) {
-		if (albumId != null) {
-			return ResponseEntity.ok(this.photoService.getPhotoListByAlbumId(albumId));
-		} else {
-			return ResponseEntity.ok(this.photoService.getPhotoList());
-		}
+	public ResponseEntity<?> getPhotos(
+		@RequestParam(value = "search", required = false) String search,
+		@PageableDefault(sort = "createdDate") Pageable pageable) {
+			return ResponseEntity.ok(this.photoService.getPhotos(search, pageable));
 	}
 
 	/* UPDATE - update a photo
