@@ -1,14 +1,14 @@
 package com.brahalla.PhotoAlbum.controller.rest;
 
 import com.brahalla.PhotoAlbum.model.json.request.AlbumRequest;
-import com.brahalla.PhotoAlbum.model.json.response.AlbumResponse;
 import com.brahalla.PhotoAlbum.service.AlbumService;
-
-import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +29,7 @@ public class AlbumController {
 	 */
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<?> createAlbum(@Valid @RequestBody AlbumRequest albumRequest) {
-    return ResponseEntity.ok(this.albumService.createAlbum(albumRequest));
+    return new ResponseEntity<>(this.albumService.createAlbum(albumRequest), HttpStatus.CREATED);
   }
 
 	/* READ - read an album
@@ -44,13 +44,10 @@ public class AlbumController {
 	 * REQUEST: GET /api/albums
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> getAlbumList(
-		@RequestParam(value = "page", defaultValue = "${albums.param.page}", required = false) String page,
-		@RequestParam(value = "count", defaultValue = "${albums.param.count}", required = false) String count,
-		@RequestParam(value = "order", defaultValue = "${albums.param.order}", required = false) String sortDirection,
-		@RequestParam(value = "sort", defaultValue = "${albums.param.sort}", required = false) String sortBy) {
-
-			return ResponseEntity.ok(this.albumService.getAlbumList(page, count, sortDirection, sortBy));
+	public ResponseEntity<?> getAlbums(
+		@RequestParam(value = "search", required = false) String search,
+		@PageableDefault(sort = "createdDate") Pageable pageable) {
+			return ResponseEntity.ok(this.albumService.getAlbums(search, pageable));
 	}
 
 	/* UPDATE - update an album

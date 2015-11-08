@@ -1,20 +1,20 @@
 package com.brahalla.PhotoAlbum.service;
 
+import com.brahalla.PhotoAlbum.domain.entity.Album;
 import com.brahalla.PhotoAlbum.model.json.request.AlbumRequest;
-import com.brahalla.PhotoAlbum.model.json.response.AlbumResponse;
 
-import java.util.List;
+import org.springframework.data.domain.Pageable;
 
 public interface AlbumService {
 
-  public AlbumResponse createAlbum(AlbumRequest albumRequest);
+  Album createAlbum(AlbumRequest albumRequest);
 
-  public AlbumResponse getAlbumById(Long id);
+  Album getAlbumById(Long id);
 
-  public List<AlbumResponse> getAlbumList(String page, String count, String sortDirection, String sortBy);
+  Iterable<Album> getAlbums(String search, Pageable pageable);
 
-  public AlbumResponse updateAlbum(Long id, AlbumRequest albumRequest);
+  Album updateAlbum(Long id, AlbumRequest albumRequest);
 
-  public void deleteAlbum(Long id);
+  void deleteAlbum(Long id);
 
 }

@@ -3,19 +3,18 @@ package com.brahalla.PhotoAlbum.service.impl;
 import com.brahalla.PhotoAlbum.dao.PhotoRepository;
 import com.brahalla.PhotoAlbum.domain.entity.Photo;
 import com.brahalla.PhotoAlbum.domain.factory.PhotoFactory;
-import com.brahalla.PhotoAlbum.model.factory.PhotoResponseFactory;
+import com.brahalla.PhotoAlbum.domain.predicate.builder.PhotoPredicateBuilder;
 import com.brahalla.PhotoAlbum.model.json.request.PhotoRequest;
-import com.brahalla.PhotoAlbum.model.json.response.PhotoResponse;
 import com.brahalla.PhotoAlbum.service.PhotoService;
 
-import java.util.LinkedList;
-import java.util.List;
+import com.mysema.query.types.expr.BooleanExpression;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,44 +25,42 @@ public class PhotoServiceImpl implements PhotoService {
 	private PhotoFactory photoFactory;
 
 	@Autowired
-	private PhotoResponseFactory photoResponseFactory;
-
-	@Autowired
 	private PhotoRepository photoRepository;
 
   @Override
 	@Transactional
-  public PhotoResponse createPhoto(PhotoRequest photoRequest) {
+  public Photo createPhoto(PhotoRequest photoRequest) {
 		Photo photo = this.photoFactory.create(photoRequest);
-		photo = this.photoRepository.save(photo);
-		return this.photoResponseFactory.create(photo);
+		return this.photoRepository.save(photo);
   }
 
   @Override
-  public PhotoResponse getPhotoById(Long id) {
-    Photo photo = this.photoRepository.findOne(id);
-		return this.photoResponseFactory.create(photo);
+  public Photo getPhotoById(Long id) {
+    return this.photoRepository.findOne(id);
   }
 
   @Override
-	@SuppressWarnings("unchecked")
-  public List<PhotoResponse> getPhotoList(String page, String count, String sortDirection, String sortBy, Long albumId) {
-		List<Photo> photoList = new LinkedList<Photo>();
-		if (albumId != null) {
-			photoList = (List<Photo>) this.photoRepository.findByAlbumId(albumId);
-		} else {
-			photoList = (List<Photo>) this.photoRepository.findAll();
+  public Iterable<Photo> getPhotos(String search, Pageable pageable) {
+		PhotoPredicateBuilder builder = new PhotoPredicateBuilder();
+
+		if (search != null) {
+			Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+			Matcher matcher = pattern.matcher(search + ",");
+			while (matcher.find()) {
+				builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+			}
 		}
-		return this.photoResponseFactory.create(photoList);
+		BooleanExpression exp = builder.build();
+
+		return this.photoRepository.findAll(exp, pageable).getContent();
   }
 
 	@Override
 	@Transactional
-	public PhotoResponse updatePhoto(Long id, PhotoRequest photoRequest) {
+	public Photo updatePhoto(Long id, PhotoRequest photoRequest) {
 		Photo photo = this.photoRepository.findOne(id);
 		BeanUtils.copyProperties(photoRequest, photo);
-		photo = this.photoRepository.save(photo);
-		return this.photoResponseFactory.create(photo);
+		return this.photoRepository.save(photo);
 	}
 
   @Override

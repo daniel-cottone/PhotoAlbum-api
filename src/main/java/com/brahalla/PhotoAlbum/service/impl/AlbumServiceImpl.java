@@ -3,19 +3,19 @@ package com.brahalla.PhotoAlbum.service.impl;
 import com.brahalla.PhotoAlbum.dao.AlbumRepository;
 import com.brahalla.PhotoAlbum.domain.entity.Album;
 import com.brahalla.PhotoAlbum.domain.factory.AlbumFactory;
-import com.brahalla.PhotoAlbum.model.factory.AlbumResponseFactory;
+import com.brahalla.PhotoAlbum.domain.predicate.builder.AlbumPredicateBuilder;
 import com.brahalla.PhotoAlbum.model.json.request.AlbumRequest;
-import com.brahalla.PhotoAlbum.model.json.response.AlbumResponse;
 import com.brahalla.PhotoAlbum.service.AlbumService;
 
-import java.util.LinkedList;
-import java.util.List;
+import com.mysema.query.types.expr.BooleanExpression;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,46 +26,42 @@ public class AlbumServiceImpl implements AlbumService {
 	private AlbumFactory albumFactory;
 
 	@Autowired
-	private AlbumResponseFactory albumResponseFactory;
-
-	@Autowired
 	private AlbumRepository albumRepository;
 
   @Override
 	@Transactional
-  public AlbumResponse createAlbum(AlbumRequest albumRequest) {
+  public Album createAlbum(AlbumRequest albumRequest) {
 		Album album = this.albumFactory.create(albumRequest);
-    album = this.albumRepository.save(album);
-		return this.albumResponseFactory.create(album);
+    return this.albumRepository.save(album);
   }
 
   @Override
-  public AlbumResponse getAlbumById(Long id) {
-    Album album = this.albumRepository.findOne(id);
-		return this.albumResponseFactory.create(album);
+  public Album getAlbumById(Long id) {
+    return this.albumRepository.findOne(id);
   }
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public List<AlbumResponse> getAlbumList(String page, String count, String sortDirection, String sortBy) {
-    Page result = this.albumRepository.findAll(
-			new PageRequest(
-				Integer.valueOf(page),
-				Integer.valueOf(count),
-				new Sort(Sort.Direction.fromStringOrNull(sortDirection), sortBy)
-			)
-		);
-		List<Album> albumList = result.getContent();
-		return this.albumResponseFactory.create(albumList);
+	public Iterable<Album> getAlbums(String search, Pageable pageable) {
+		AlbumPredicateBuilder builder = new AlbumPredicateBuilder();
+
+		if (search != null) {
+			Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+			Matcher matcher = pattern.matcher(search + ",");
+			while (matcher.find()) {
+				builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+			}
+		}
+		BooleanExpression exp = builder.build();
+
+    return this.albumRepository.findAll(exp, pageable).getContent();
   }
 
 	@Override
 	@Transactional
-	public AlbumResponse updateAlbum(Long id, AlbumRequest albumRequest) {
+	public Album updateAlbum(Long id, AlbumRequest albumRequest) {
 		Album album = this.albumRepository.findOne(id);
 		BeanUtils.copyProperties(albumRequest, album);
-		album = this.albumRepository.save(album);
-		return this.albumResponseFactory.create(album);
+		return this.albumRepository.save(album);
 	}
 
   @Override
