@@ -26,8 +26,8 @@ public class PhotoRequest extends ModelBase {
 		this.setAlbumId(albumId);
 	}
 
-	@NotEmpty
-	@Length(max = 50)
+	@NotEmpty(message = "photo.title.notEmpty")
+	@Length(max = 50, message = "photo.title.length")
 	public String getTitle() {
 		return this.title;
 	}
@@ -36,8 +36,8 @@ public class PhotoRequest extends ModelBase {
 		this.title = title;
 	}
 
-	@NotEmpty
-	@Length(max = 100)
+	@NotEmpty(message = "photo.filePath.notEmpty")
+	@Length(max = 100, message = "photo.filePath.length")
 	public String getFilePath() {
 		return this.filePath;
 	}
@@ -46,7 +46,7 @@ public class PhotoRequest extends ModelBase {
 		this.filePath = filePath;
 	}
 
-	@Min(value = 1)
+	@Min(value = 1, message = "photo.albumId.min")
 	public Long getAlbumId() {
 		return this.albumId;
 	}
