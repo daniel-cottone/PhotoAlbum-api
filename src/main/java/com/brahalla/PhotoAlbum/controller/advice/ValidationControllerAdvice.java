@@ -29,7 +29,6 @@ public class ValidationControllerAdvice {
   private ErrorMessageFactory errorMessageFactory;
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
-  @ResponseBody
   public ResponseEntity<?> processValidationErrors(MethodArgumentNotValidException exception) {
     BindingResult result = exception.getBindingResult();
     List<FieldError> errors = result.getFieldErrors();
