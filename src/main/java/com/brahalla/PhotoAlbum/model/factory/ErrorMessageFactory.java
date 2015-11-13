@@ -7,24 +7,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ErrorMessageFactory implements FactoryBean<ErrorMessage> {
 
-  public ErrorMessage create(List<String> errors) {
+  public ErrorMessage create(HttpStatus status, Exception e, List<String> errors) {
     return new ErrorMessage(
+      status.toString(),
+      status.getReasonPhrase(),
+      e.getClass().getName(),
       errors
     );
   }
-
-  /*public List<ErrorMessage> create(List<List<String>> errorsList) {
-    List<ErrorMessage> errorMessageList = new LinkedList<ErrorMessage>();
-    if (errorsList != null) {
-      errorsList.forEach(e -> errorMessageList.add(this.create(e)));
-    }
-    return errorMessageList;
-  }*/
 
   @Override
   public ErrorMessage getObject() {

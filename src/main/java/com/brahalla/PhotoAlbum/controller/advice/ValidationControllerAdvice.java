@@ -39,7 +39,9 @@ public class ValidationControllerAdvice {
       errors.forEach(e -> errorMessages.add(messageSource.getMessage(e.getDefaultMessage(), null, currentLocale)));
     }
 
-    return new ResponseEntity<>(this.errorMessageFactory.create(errorMessages), HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(
+      this.errorMessageFactory.create(HttpStatus.BAD_REQUEST, exception, errorMessages), HttpStatus.BAD_REQUEST
+    );
   }
 
 }
